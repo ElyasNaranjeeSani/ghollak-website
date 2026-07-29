@@ -28,7 +28,7 @@
     },
     {
       "icon": "magnifyingglass",
-      "title": { "en": "Advanced transaction search", "fa": "جست‌وجو پیشرفته در تراکنش ها" },
+      "title": { "en": "Advanced transaction search", "fa": "جست‌وجوی پیشرفته در تراکنش ها" },
       "description": {
         "en": "Instantly search across all your accounts and transactions, export from results and more.",
         "fa": "جست‌وجوی پیشرفته و آنی در تمامی قلک ها و تراکنش‌ها، فیلتر کردن نتیجه ها، خروجی از نتیجه ها و بیشتر..."
