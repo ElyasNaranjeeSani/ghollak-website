@@ -1,0 +1,46 @@
+{
+  "title": { "en": "Why go full version?", "fa": "چرا نسخه کامل قلک؟" },
+  "subtitle": { "en": "Everything in Mini, plus:", "fa": "همه امکانات نسخه رایگان، به‌علاوه:" },
+  "benefits": [
+    {
+      "icon": "icloud.and.arrow.up",
+      "title": { "en": "iCloud Sync", "fa": "همگام‌سازی آیکلود" },
+      "description": {
+        "en": "Keep your data synced automatically across every device signed into the same iCloud account.",
+        "fa": "اطلاعات شما به‌صورت خودکار در تمامی دستگاه‌های متصل به همان اپل آیدی (آیفون، آیپد ، مک) همگام‌سازی می‌شود."
+      }
+    },
+    {
+      "icon": "arrow.up.doc",
+      "title": { "en": "Manual Backup & Restore", "fa": "پشتیبان‌گیری و بازیابی دستی" },
+      "description": {
+        "en": "Create a backup file anytime and restore your data whenever you need to.",
+        "fa": "هر زمان که بخواهید یک فایل پشتیبان بسازید و اطلاعات خود را در هر زمان بازیابی کنید."
+      }
+    },
+    {
+      "icon": "person.2.fill",
+      "title": { "en": "Unlimited Accounts", "fa": "حساب‌های نامحدود" },
+      "description": {
+        "en": "Track as many accounts as you need, with no 2-account limit.",
+        "fa": "هر تعداد قلک که نیاز دارید اضافه کنید — بدون محدودیت ۲ قلکی نسخه رایگان."
+      }
+    },
+    {
+      "icon": "magnifyingglass",
+      "title": { "en": "Advanced transaction search", "fa": "جست‌وجو پیشرفته در تراکنش ها" },
+      "description": {
+        "en": "Instantly search across all your accounts and transactions, export from results and more.",
+        "fa": "جست‌وجوی پیشرفته و آنی در تمامی قلک ها و تراکنش‌ها، فیلتر کردن نتیجه ها، خروجی از نتیجه ها و بیشتر..."
+      }
+    },
+    {
+      "icon": "paintpalette.fill",
+      "title": { "en": "App Themes", "fa": "تم‌های رنگی برنامه" },
+      "description": {
+        "en": "Personalize Ghollak with different color themes, and optionally match your home-screen icon to it.",
+        "fa": "ظاهر قلک را با تم‌های رنگی مختلف شخصی‌سازی کنید و در صورت تمایل آیکون صفحه اصلی را هم‌رنگ تم کنید."
+      }
+    }
+  ]
+}
