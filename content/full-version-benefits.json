@@ -3,6 +3,14 @@
   "subtitle": { "en": "Everything in Mini, plus:", "fa": "همه امکانات نسخه رایگان، به‌علاوه:" },
   "benefits": [
     {
+      "icon": "person.2.fill",
+      "title": { "en": "Unlimited Accounts", "fa": "حساب‌های نامحدود" },
+      "description": {
+        "en": "Track as many accounts as you need, with no 2-account limit.",
+        "fa": "هر تعداد قلک که نیاز دارید اضافه کنید — بدون محدودیت ۲ قلکی نسخه رایگان."
+      }
+    },
+    {
       "icon": "icloud.and.arrow.up",
       "title": { "en": "iCloud Sync", "fa": "همگام‌سازی آیکلود" },
       "description": {
@@ -19,19 +27,19 @@
       }
     },
     {
-      "icon": "person.2.fill",
-      "title": { "en": "Unlimited Accounts", "fa": "حساب‌های نامحدود" },
+      "icon": "bell.badge.fill",
+      "title": { "en": "Reminders", "fa": "یادآورها" },
       "description": {
-        "en": "Track as many accounts as you need, with no 2-account limit.",
-        "fa": "هر تعداد قلک که نیاز دارید اضافه کنید — بدون محدودیت ۲ قلکی نسخه رایگان."
+        "en": "Set reminders for anything, or attach them to an account — get notified locally on your device.",
+        "fa": "برای هر کاری یادآور تنظیم کنید یا آن را به یک قلک متصل کنید — به‌صورت محلی روی دستگاه‌تان مطلع می‌شوید."
       }
     },
     {
-      "icon": "magnifyingglass",
-      "title": { "en": "Advanced transaction search", "fa": "جست‌وجوی پیشرفته در تراکنش ها" },
+      "icon": "arrow.triangle.2.circlepath",
+      "title": { "en": "Recurring Transactions", "fa": "تراکنش‌های تکرارشونده" },
       "description": {
-        "en": "Instantly search across all your accounts and transactions, export from results and more.",
-        "fa": "جست‌وجوی پیشرفته و آنی در تمامی قلک ها و تراکنش‌ها، فیلتر کردن نتیجه ها، خروجی از نتیجه ها و بیشتر..."
+        "en": "Set up a transaction that repeats automatically on a schedule you choose, with an optional reminder before each occurrence.",
+        "fa": "یک تراکنش تنظیم کنید که طبق زمان‌بندی دلخواه شما به‌صورت خودکار تکرار شود، همراه با امکان یادآوری اختیاری پیش از هر بار."
       }
     },
     {
@@ -40,6 +48,22 @@
       "description": {
         "en": "Personalize Ghollak with different color themes, and optionally match your home-screen icon to it.",
         "fa": "ظاهر قلک را با تم‌های رنگی مختلف شخصی‌سازی کنید و در صورت تمایل آیکون صفحه اصلی را هم‌رنگ تم کنید."
+      }
+    },
+    {
+      "icon": "sparkles",
+      "title": { "en": "Report Insights", "fa": "نکات جالب" },
+      "description": {
+        "en": "A card in Reports that puts together useful facts about your activity on its own — spending and income totals, your biggest expense, top spending category, and more.",
+        "fa": "بخشی در گزارش‌ها که به‌طور خودکار نکات مفیدی درباره فعالیت مالی شما ارائه می‌دهد — مجموع هزینه و درآمد، بزرگترین هزینه، پرهزینه‌ترین دسته‌بندی و موارد دیگر."
+      }
+    },
+    {
+      "icon": "magnifyingglass",
+      "title": { "en": "Advanced transaction search", "fa": "جست‌وجو پیشرفته در تراکنش ها" },
+      "description": {
+        "en": "Instantly search across all your accounts and transactions, export from results and more.",
+        "fa": "جست‌وجوی پیشرفته و آنی در تمامی قلک ها و تراکنش‌ها، فیلتر کردن نتیجه ها، خروجی از نتیجه ها و بیشتر..."
       }
     }
   ]
