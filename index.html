@@ -324,6 +324,39 @@
       .spotlight-duo { margin-top: 1rem; }
     }
 
+    /* ── FACTS STRIP ── */
+    .facts {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--accent-light);
+    }
+
+    .fact {
+      flex: 1;
+      min-width: 200px;
+      max-width: 280px;
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .fact:last-child { border-right: none; }
+
+    .fact-headline {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      color: var(--accent-dark);
+      margin-bottom: 0.4rem;
+    }
+
+    .fact-caption {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
     /* ── CONTACT ── */
     .contact-section {
       max-width: 560px;
@@ -460,6 +493,9 @@
       nav { padding: 1rem 1.25rem; }
       .nav-links { gap: 1.25rem; flex-wrap: wrap; }
       .spotlight { padding: 3.5rem 1.5rem; }
+      .facts { flex-direction: column; align-items: center; }
+      .fact { border-right: none; border-bottom: 1px solid var(--border); max-width: 100%; }
+      .fact:last-child { border-bottom: none; }
       .form-row { grid-template-columns: 1fr; }
       footer { flex-direction: column; align-items: flex-start; }
     }
@@ -579,6 +615,26 @@
       </div>
     </div>
   </section>
+
+  <!-- FACTS -->
+  <div class="facts">
+    <div class="fact">
+      <p class="fact-headline">14+ Years</p>
+      <p class="fact-caption">On the App Store, since 2012</p>
+    </div>
+    <div class="fact">
+      <p class="fact-headline">Shamsi &amp; Gregorian</p>
+      <p class="fact-caption">Pick the calendar you use</p>
+    </div>
+    <div class="fact">
+      <p class="fact-headline">Persian &amp; English</p>
+      <p class="fact-caption">Use the app in either language</p>
+    </div>
+    <div class="fact">
+      <p class="fact-headline">Free &amp; Pro</p>
+      <p class="fact-caption">Ghollak Mini or the full app</p>
+    </div>
+  </div>
 
   <!-- CONTACT -->
   <section class="contact-section" id="contact">
