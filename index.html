@@ -300,8 +300,9 @@
       width: 45%;
       max-width: 230px;
       aspect-ratio: 680 / 1416;
-      box-shadow: 0 20px 40px rgba(var(--ink-rgb),0.15);
+      box-shadow: 0 0 0 1px #000, 0 20px 40px rgba(var(--ink-rgb),0.15);
       position: relative;
+      backface-visibility: hidden;
     }
 
     .spotlight-duo img:first-child {
