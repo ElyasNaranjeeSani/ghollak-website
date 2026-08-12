@@ -420,7 +420,7 @@
     .form-field input:focus,
     .form-field textarea:focus {
       border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(45,106,79,0.1);
+      box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.1);
     }
 
     .form-field textarea { resize: vertical; min-height: 120px; }
@@ -440,8 +440,8 @@
     }
     .submit-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(45,106,79,0.25);
-      background: #245c43;
+      box-shadow: 0 6px 20px rgba(var(--accent-rgb), 0.25);
+      background: var(--accent-dark);
     }
 
     /* ── FOOTER ── */
@@ -664,7 +664,7 @@
   <!-- FOOTER -->
   <footer>
     <a href="/" class="footer-brand">Ghollak</a>
-    <p>© 2025 Ghollak – All Rights Reserved.</p>
+    <p>© 2026 Ghollak – All Rights Reserved.</p>
     <ul class="footer-links">
       <li><a href="/privacy-policy.html">Privacy Policy</a></li>
       <li><a href="/tavallod-privacy-policy.html">Tavallod Privacy Policy</a></li>
