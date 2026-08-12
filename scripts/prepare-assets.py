@@ -40,6 +40,13 @@ SCREENSHOTS = [
     ("ghollak-screenshot (1) copy 2.png", "export-pdf-excel-fa", True),
 ]
 
+# Added later, for the hero's Persian/English duo image. Lives in a
+# different source folder than the rest, so it's handled separately
+# below rather than folded into SCREENSHOTS. Cropped-only (not used in
+# the gallery) since it pairs with the existing all-accounts-en crop.
+ACCOUNTS_FA_SRC = "/Users/elyas/Desktop/0x0ss (17).png"
+ACCOUNTS_FA_BASENAME = "all-accounts-fa"
+
 
 def save_quantized(im, path):
     im.convert("P", palette=Image.ADAPTIVE, colors=256).save(path, optimize=True)
@@ -62,6 +69,11 @@ def main():
             save_quantized(cropped_im, os.path.join(OUT_CROPPED, f"{basename}.png"))
 
         print(f"done: {basename}")
+
+    accounts_fa = Image.open(ACCOUNTS_FA_SRC).convert("RGB")
+    accounts_fa_cropped = accounts_fa.crop(CROP_BOX).resize(CROPPED_SIZE, Image.LANCZOS)
+    save_quantized(accounts_fa_cropped, os.path.join(OUT_CROPPED, f"{ACCOUNTS_FA_BASENAME}.png"))
+    print(f"done: {ACCOUNTS_FA_BASENAME}")
 
     mini = Image.open(ICON_MINI).convert("RGB").resize(ICON_SIZE, Image.LANCZOS)
     mini.save(os.path.join(OUT_ICONS, "ghollak-mini-icon.png"), optimize=True)
