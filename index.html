@@ -22,6 +22,7 @@
       --muted: #7a7570;
       --accent: #2f6fbd;
       --accent-rgb: 47, 111, 189;
+      --ink-rgb: 26, 26, 26;
       --accent-dark: #24568f;
       --accent-light: #e8f1fb;
       --border: #e8e4df;
@@ -88,7 +89,7 @@
     }
 
     .hero-inner {
-      max-width: 1160px;
+      max-width: 1120px;
       margin: 0 auto;
       width: 100%;
       display: grid;
@@ -198,7 +199,8 @@
     .hero-phone {
       width: min(320px, 100%);
       height: auto;
-      filter: drop-shadow(0 30px 50px rgba(26,26,26,0.18));
+      aspect-ratio: 680 / 1416;
+      filter: drop-shadow(0 30px 50px rgba(var(--ink-rgb),0.18));
     }
 
     @media (max-width: 900px) {
@@ -255,8 +257,9 @@
     .gallery-item img {
       width: 100%;
       height: auto;
+      aspect-ratio: 640 / 1391;
       border-radius: 1.5rem;
-      box-shadow: 0 16px 32px rgba(26,26,26,0.12);
+      box-shadow: 0 16px 32px rgba(var(--ink-rgb),0.12);
       display: block;
     }
 
@@ -302,8 +305,9 @@
     .spotlight-duo img {
       width: 45%;
       max-width: 230px;
+      aspect-ratio: 680 / 1416;
       border-radius: 1.5rem;
-      box-shadow: 0 20px 40px rgba(26,26,26,0.15);
+      box-shadow: 0 20px 40px rgba(var(--ink-rgb),0.15);
       position: relative;
     }
 
@@ -329,7 +333,6 @@
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
       background: var(--accent-light);
     }
@@ -482,6 +485,8 @@
     }
     .footer-links a:hover { color: var(--ink); }
 
+    #features, #contact { scroll-margin-top: 6rem; }
+
     /* ── ANIMATIONS ── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(18px); }
@@ -492,12 +497,15 @@
     @media (max-width: 640px) {
       nav { padding: 1rem 1.25rem; }
       .nav-links { gap: 1.25rem; flex-wrap: wrap; }
+      .hero { padding: 7rem 1.5rem 3rem; }
+      .gallery-heading, .gallery-track { padding-left: 1.5rem; padding-right: 1.5rem; }
       .spotlight { padding: 3.5rem 1.5rem; }
       .facts { flex-direction: column; align-items: center; }
       .fact { border-right: none; border-bottom: 1px solid var(--border); max-width: 100%; }
       .fact:last-child { border-bottom: none; }
+      .contact-section { padding: 0 1.5rem; }
       .form-row { grid-template-columns: 1fr; }
-      footer { flex-direction: column; align-items: flex-start; }
+      footer { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
@@ -509,6 +517,7 @@
     <ul class="nav-links">
       <li><a href="/">Home</a></li>
       <li><a href="#features">Features</a></li>
+      <li><a href="#contact">Contact</a></li>
       <li><a href="/privacy-policy.html">Privacy Policy</a></li>
       <li><a href="/tavallod-privacy-policy.html">Tavallod Privacy Policy</a></li>
     </ul>
@@ -518,7 +527,7 @@
   <section class="hero">
     <div class="hero-inner">
       <div class="hero-copy">
-        <p class="hero-eyebrow">14 years on the App Store</p>
+        <p class="hero-eyebrow">14+ years on the App Store</p>
         <h1>Personal finance,<br /><em>without the panic.</em></h1>
         <p class="hero-sub">Ghollak has been the Persian-speaking world's personal finance app since 2012 — fully bilingual in Persian and English, with support for both the Shamsi and Gregorian calendars.</p>
         <div class="hero-downloads">
