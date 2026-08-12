@@ -81,30 +81,26 @@
     .hero {
       min-height: 100vh;
       display: flex;
-      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 8rem 2rem 4rem;
+      padding: 9rem 2.5rem 4rem;
       position: relative;
       overflow: hidden;
     }
 
-    /* subtle geometric background */
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 60% 50% at 70% 30%, rgba(45,106,79,0.07) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 60% at 20% 80%, rgba(45,106,79,0.05) 0%, transparent 60%);
-      pointer-events: none;
+    .hero-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 3.5rem;
+      align-items: center;
     }
 
     .hero-eyebrow {
       font-family: var(--sans);
       font-size: 0.75rem;
-      font-weight: 500;
+      font-weight: 600;
       letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--accent);
@@ -115,11 +111,10 @@
 
     .hero h1 {
       font-family: var(--serif);
-      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-size: clamp(2.6rem, 5vw, 4.2rem);
       line-height: 1.1;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.02em;
       color: var(--ink);
-      max-width: 700px;
       margin-bottom: 1.5rem;
       opacity: 0;
       animation: fadeUp 0.7s ease 0.2s forwards;
@@ -132,45 +127,85 @@
 
     .hero-sub {
       font-size: 1.1rem;
-      font-weight: 300;
+      font-weight: 400;
       color: var(--muted);
-      max-width: 420px;
+      max-width: 460px;
       line-height: 1.7;
-      margin-bottom: 3rem;
+      margin-bottom: 2.5rem;
       opacity: 0;
       animation: fadeUp 0.7s ease 0.35s forwards;
     }
 
-    .hero-cta {
-      display: inline-block;
-      background: var(--accent);
-      color: #fff;
-      padding: 0.9rem 2.2rem;
-      border-radius: 2rem;
-      font-size: 0.9rem;
-      font-weight: 500;
-      text-decoration: none;
-      letter-spacing: 0.02em;
-      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    .hero-downloads {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
       opacity: 0;
       animation: fadeUp 0.7s ease 0.5s forwards;
     }
-    .hero-cta:hover {
+
+    .store-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: #000;
+      color: #fff;
+      border-radius: 0.85rem;
+      padding: 0.6rem 1.2rem 0.6rem 0.6rem;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .store-badge:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(45,106,79,0.25);
-      background: #245c43;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
     }
 
-    /* decorative pill */
-    .hero-pill {
-      position: absolute;
-      bottom: 3rem;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 1px;
-      height: 60px;
-      background: linear-gradient(to bottom, transparent, var(--accent));
-      opacity: 0.4;
+    .store-badge-icon {
+      width: 2.6rem;
+      height: 2.6rem;
+      border-radius: 0.6rem;
+      display: block;
+    }
+
+    .store-badge-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.25;
+    }
+
+    .store-badge-edition {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0.75;
+    }
+
+    .store-badge-store {
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.3s forwards;
+    }
+
+    .hero-phone {
+      width: min(320px, 100%);
+      height: auto;
+      filter: drop-shadow(0 30px 50px rgba(26,26,26,0.18));
+    }
+
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-sub { margin-left: auto; margin-right: auto; }
+      .hero-downloads { justify-content: center; }
+      .hero-visual { margin-top: 2.5rem; }
     }
 
     /* ── FEATURES STRIP ── */
@@ -368,11 +403,32 @@
 
   <!-- HERO -->
   <section class="hero">
-    <p class="hero-eyebrow">Your money, finally clear</p>
-    <h1>Personal finance,<br /><em>without the panic.</em></h1>
-    <p class="hero-sub">Simple, calm tools to help you understand where your money goes — and feel good about it.</p>
-    <a href="#contact" class="hero-cta">Get in touch ↓</a>
-    <div class="hero-pill"></div>
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="hero-eyebrow">14 years on the App Store</p>
+        <h1>Personal finance,<br /><em>without the panic.</em></h1>
+        <p class="hero-sub">Ghollak has been the Persian-speaking world's personal finance app since 2012 — fully bilingual in Persian and English, with support for both the Shamsi and Gregorian calendars.</p>
+        <div class="hero-downloads">
+          <a class="store-badge" href="https://apps.apple.com/us/app/ghollak-mini-english-%D9%81%D8%A7%D8%B1%D8%B3%DB%8C/id611339401" target="_blank" rel="noopener">
+            <img src="assets/icons/ghollak-mini-icon.png" alt="" class="store-badge-icon" />
+            <span class="store-badge-text">
+              <span class="store-badge-edition">Free — Ghollak Mini</span>
+              <span class="store-badge-store">Download on the App Store</span>
+            </span>
+          </a>
+          <a class="store-badge" href="https://apps.apple.com/us/app/ghollak-persian-english/id544694377" target="_blank" rel="noopener">
+            <img src="assets/icons/ghollak-icon.png" alt="" class="store-badge-icon" />
+            <span class="store-badge-text">
+              <span class="store-badge-edition">Pro — Ghollak</span>
+              <span class="store-badge-store">Download on the App Store</span>
+            </span>
+          </a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="assets/screenshots/cropped/all-accounts-en.png" alt="Ghollak showing a list of accounts and their balances in one place" class="hero-phone" />
+      </div>
+    </div>
   </section>
 
   <!-- FEATURES -->
