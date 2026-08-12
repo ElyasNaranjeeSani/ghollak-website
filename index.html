@@ -208,6 +208,58 @@
       .hero-visual { margin-top: 2.5rem; }
     }
 
+    /* ── SCREENSHOT GALLERY ── */
+    .gallery-section {
+      padding: 5rem 0;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .gallery-heading {
+      max-width: 1160px;
+      margin: 0 auto 2.5rem;
+      padding: 0 2.5rem;
+    }
+
+    .gallery-heading h2 {
+      font-family: var(--serif);
+      font-size: 2rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .gallery-heading p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .gallery-track {
+      display: flex;
+      gap: 1.5rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding: 0 2.5rem 1rem;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .gallery-track::-webkit-scrollbar { height: 8px; }
+    .gallery-track::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+    .gallery-item {
+      flex: 0 0 auto;
+      width: clamp(170px, 22vw, 220px);
+      scroll-snap-align: start;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      border-radius: 1.5rem;
+      box-shadow: 0 16px 32px rgba(26,26,26,0.12);
+      display: block;
+    }
+
     /* ── FEATURES STRIP ── */
     .features {
       display: flex;
@@ -428,6 +480,25 @@
       <div class="hero-visual">
         <img src="assets/screenshots/cropped/all-accounts-en.png" alt="Ghollak showing a list of accounts and their balances in one place" class="hero-phone" />
       </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery-section" id="features">
+    <div class="gallery-heading">
+      <h2>Ghollak, in action</h2>
+      <p>A closer look at what's inside — in both Persian and English.</p>
+    </div>
+    <div class="gallery-track">
+      <div class="gallery-item"><img src="assets/screenshots/gallery/all-accounts-en.png" alt="All accounts and balances in one place" loading="lazy" /></div>
+      <div class="gallery-item"><img src="assets/screenshots/gallery/manage-transactions-en.png" alt="Browsing transactions in a checking account" loading="lazy" /></div>
+      <div class="gallery-item"><img src="assets/screenshots/gallery/manage-transactions-fa.png" alt="Managing transactions in Persian" loading="lazy" /></div>
+      <div class="gallery-item"><img src="assets/screenshots/gallery/reminders-en.png" alt="Upcoming reminders for bills and checks" loading="lazy" /></div>
+      <div class="gallery-item"><img src="assets/screenshots/gallery/reminders-fa.png" alt="Reminders list in Persian" loading="lazy" /></div>
+      <div class="gallery-item"><img src="assets/screenshots/gallery/charts-en.png" alt="Income and expense charts" loading="lazy" /></div>
+      <div class="gallery-item"><img src="assets/screenshots/gallery/charts-fa.png" alt="Charts and visual reports in Persian" loading="lazy" /></div>
+      <div class="gallery-item"><img src="assets/screenshots/gallery/reports-builder-fa.png" alt="Building a custom report by date range" loading="lazy" /></div>
+      <div class="gallery-item"><img src="assets/screenshots/gallery/export-pdf-excel-fa.png" alt="Exporting a report to PDF" loading="lazy" /></div>
     </div>
   </section>
 
