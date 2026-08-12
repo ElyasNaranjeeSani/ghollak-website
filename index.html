@@ -260,41 +260,68 @@
       display: block;
     }
 
-    /* ── FEATURES STRIP ── */
-    .features {
-      display: flex;
-      justify-content: center;
-      gap: 0;
+    /* ── SPOTLIGHTS ── */
+    .spotlight {
+      padding: 5rem 2.5rem;
+    }
+    .spotlight:nth-of-type(even) {
+      background: var(--surface);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
-      background: var(--surface);
     }
 
-    .feature {
-      flex: 1;
-      max-width: 300px;
-      padding: 2.5rem 2rem;
-      text-align: center;
-      border-right: 1px solid var(--border);
-    }
-    .feature:last-child { border-right: none; }
-
-    .feature-icon {
-      font-size: 1.5rem;
-      margin-bottom: 0.75rem;
+    .spotlight-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+      align-items: center;
     }
 
-    .feature h3 {
+    .spotlight h3 {
       font-family: var(--serif);
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.01em;
+      font-size: 1.9rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
     }
 
-    .feature p {
-      font-size: 0.875rem;
+    .spotlight p {
       color: var(--muted);
-      line-height: 1.6;
+      font-size: 1rem;
+      line-height: 1.7;
+      max-width: 440px;
+    }
+
+    .spotlight-duo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .spotlight-duo img {
+      width: 45%;
+      max-width: 230px;
+      border-radius: 1.5rem;
+      box-shadow: 0 20px 40px rgba(26,26,26,0.15);
+      position: relative;
+    }
+
+    .spotlight-duo img:first-child {
+      transform: rotate(-4deg) translateX(14%);
+      z-index: 1;
+    }
+
+    .spotlight-duo img:last-child {
+      transform: rotate(4deg) translateX(-14%);
+      margin-left: -6%;
+      z-index: 2;
+    }
+
+    @media (max-width: 900px) {
+      .spotlight-inner { grid-template-columns: 1fr; text-align: center; }
+      .spotlight p { margin-left: auto; margin-right: auto; }
+      .spotlight-duo { margin-top: 1rem; }
     }
 
     /* ── CONTACT ── */
@@ -432,9 +459,7 @@
     @media (max-width: 640px) {
       nav { padding: 1rem 1.25rem; }
       .nav-links { gap: 1.25rem; flex-wrap: wrap; }
-      .features { flex-direction: column; align-items: center; }
-      .feature { border-right: none; border-bottom: 1px solid var(--border); max-width: 100%; }
-      .feature:last-child { border-bottom: none; }
+      .spotlight { padding: 3.5rem 1.5rem; }
       .form-row { grid-template-columns: 1fr; }
       footer { flex-direction: column; align-items: flex-start; }
     }
@@ -502,24 +527,58 @@
     </div>
   </section>
 
-  <!-- FEATURES -->
-  <div class="features">
-    <div class="feature">
-      <div class="feature-icon">📊</div>
-      <h3>Clear overview</h3>
-      <p>See exactly where your money goes, without the overwhelm.</p>
+  <!-- SPOTLIGHTS -->
+  <section class="spotlight">
+    <div class="spotlight-inner">
+      <div class="spotlight-duo">
+        <img src="assets/screenshots/cropped/manage-transactions-en.png" alt="Transaction list for a checking account" loading="lazy" />
+        <img src="assets/screenshots/cropped/manage-transactions-fa.png" alt="Transaction list shown in Persian" loading="lazy" />
+      </div>
+      <div>
+        <h3>Manage every transaction, effortlessly</h3>
+        <p>Add, search, and review transactions in seconds. Transfer between accounts, filter by income or expense, and keep every balance up to date — in Persian or English, whichever you prefer.</p>
+      </div>
     </div>
-    <div class="feature">
-      <div class="feature-icon">🧘</div>
-      <h3>Calm by design</h3>
-      <p>No scary charts, no judgment. Just simple, honest numbers.</p>
+  </section>
+
+  <section class="spotlight">
+    <div class="spotlight-inner">
+      <div>
+        <h3>Never miss a check, bill, or reminder</h3>
+        <p>Ghollak tracks your checks, recurring transactions, and one-off reminders, then notifies you before they're due. Set up a bill once and let it repeat automatically — reliably, every time.</p>
+      </div>
+      <div class="spotlight-duo">
+        <img src="assets/screenshots/cropped/reminders-en.png" alt="Reminders for upcoming bills and checks" loading="lazy" />
+        <img src="assets/screenshots/cropped/reminders-fa.png" alt="Reminders shown in Persian" loading="lazy" />
+      </div>
     </div>
-    <div class="feature">
-      <div class="feature-icon">🔒</div>
-      <h3>Your data, yours</h3>
-      <p>Privacy-first. We never sell or share your financial information.</p>
+  </section>
+
+  <section class="spotlight">
+    <div class="spotlight-inner">
+      <div class="spotlight-duo">
+        <img src="assets/screenshots/cropped/charts-en.png" alt="Income and expense charts" loading="lazy" />
+        <img src="assets/screenshots/cropped/charts-fa.png" alt="Charts shown in Persian" loading="lazy" />
+      </div>
+      <div>
+        <h3>See the full picture, in any calendar</h3>
+        <p>Visual charts break down income and expenses at a glance, and Pro reports let you build custom breakdowns over any date range — in either the Shamsi or Gregorian calendar.</p>
+      </div>
     </div>
-  </div>
+  </section>
+
+  <section class="spotlight">
+    <div class="spotlight-inner">
+      <div>
+        <h3>Take your data with you</h3>
+        <p>Track unlimited accounts, sync automatically across your devices with iCloud, and back up or restore your data manually whenever you want. Export any report to PDF or Excel, and personalize the app with different themes.</p>
+      </div>
+      <div class="spotlight-duo">
+        <img src="assets/screenshots/cropped/all-accounts-en.png" alt="All accounts and balances in one place" loading="lazy" />
+        <img src="assets/screenshots/cropped/export-pdf-excel-fa.png" alt="Exporting a report to PDF in Persian" loading="lazy" />
+      </div>
+    </div>
+  </section>
 
   <!-- CONTACT -->
   <section class="contact-section" id="contact">
