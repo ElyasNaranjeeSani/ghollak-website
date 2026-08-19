@@ -65,6 +65,14 @@
         "en": "Instantly search across all your accounts and transactions, export from results and more.",
         "fa": "جست‌وجوی پیشرفته و آنی در تمامی قلک ها و تراکنش‌ها، فیلتر کردن نتیجه ها، خروجی از نتیجه ها و بیشتر..."
       }
+    },
+    {
+      "icon": "doc.text.image",
+      "title": { "en": "Export Personalizations", "fa": "شخصی‌سازی خروجی" },
+      "description": {
+        "en": "Customize your exports — rename summary totals, add your own logo to PDF exports, and show amounts in red and green.",
+        "fa": "خروجی‌های خود را شخصی‌سازی کنید — عناوین جمع‌بندی را تغییر دهید، لوگوی خودتان را به فایل‌های PDF اضافه کنید و مبالغ را به رنگ قرمز و سبز نمایش دهید."
+      }
     }
   ]
 }
