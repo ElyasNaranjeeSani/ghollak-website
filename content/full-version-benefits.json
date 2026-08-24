@@ -73,6 +73,14 @@
         "en": "Customize your exports — rename summary totals, add your own logo to PDF exports, and show amounts in red and green.",
         "fa": "خروجی‌های خود را شخصی‌سازی کنید — عناوین جمع‌بندی را تغییر دهید، لوگوی خودتان را به فایل‌های PDF اضافه کنید و مبالغ را به رنگ قرمز و سبز نمایش دهید."
       }
+    },
+    {
+      "icon": "square.grid.2x2",
+      "title": { "en": "Widgets", "fa": "ویجت‌ها" },
+      "description": {
+        "en": "Track a goal or see an account's balance and activity right from your Home Screen or Lock Screen.",
+        "fa": "پیشرفت یک هدف یا موجودی و فعالیت یک قلک را مستقیماً از صفحه اصلی یا صفحه قفل خود ببینید."
+      }
     }
   ]
 }
