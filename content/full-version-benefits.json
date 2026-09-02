@@ -1,13 +1,13 @@
 {
   "title": { "en": "Why go full version?", "fa": "چرا نسخه کامل قلک؟" },
-  "subtitle": { "en": "Everything in Mini, plus:", "fa": "همه امکانات نسخه رایگان، به‌علاوه:" },
+  "subtitle": { "en": "Everything in the free plan, plus:", "fa": "همه امکانات نسخه رایگان، به‌علاوه:" },
   "benefits": [
     {
       "icon": "person.2.fill",
       "title": { "en": "Unlimited Accounts", "fa": "حساب‌های نامحدود" },
       "description": {
-        "en": "Track as many accounts as you need, with no 2-account limit.",
-        "fa": "هر تعداد قلک که نیاز دارید اضافه کنید — بدون محدودیت ۲ قلکی نسخه رایگان."
+        "en": "Track as many accounts as you need, with no 3-account limit.",
+        "fa": "هر تعداد قلک که نیاز دارید اضافه کنید — بدون محدودیت ۳ قلکی نسخه رایگان."
       }
     },
     {
@@ -43,11 +43,27 @@
       }
     },
     {
-      "icon": "paintpalette.fill",
-      "title": { "en": "App Themes", "fa": "تم‌های رنگی برنامه" },
+      "icon": "arrow.left.arrow.right",
+      "title": { "en": "Transfers Between Accounts", "fa": "انتقال وجه بین قلک‌ها" },
       "description": {
-        "en": "Personalize Ghollak with different color themes, and optionally match your home-screen icon to it.",
-        "fa": "ظاهر قلک را با تم‌های رنگی مختلف شخصی‌سازی کنید و در صورت تمایل آیکون صفحه اصلی را هم‌رنگ تم کنید."
+        "en": "Move money between two accounts right from the Add Transaction screen — turn on Transfer, pick a destination account, and both sides are recorded together. Recurring transfers are supported too.",
+        "fa": "وجه را از همان صفحه ثبت تراکنش بین دو قلک منتقل کنید — گزینه «انتقال» را روشن کنید، قلک مقصد را انتخاب کنید و هر دو طرف با هم ثبت می‌شوند. انتقال تکرارشونده هم پشتیبانی می‌شود."
+      }
+    },
+    {
+      "icon": "chart.bar.xaxis",
+      "title": { "en": "Charts", "fa": "نمودارها" },
+      "description": {
+        "en": "A dedicated Charts screen with income and spending totals, category breakdowns, trends over time, running balance, period breakdown, cumulative totals and more — pin the ones you check most to the top. Checks get their own overview chart on the Checks screen too.",
+        "fa": "یک صفحه اختصاصی نمودارها با مجموع درآمد و هزینه، تفکیک دسته‌بندی‌ها، روند تغییرات در طول زمان، تراز جاری، تفکیک بازه زمانی، مجموع تجمعی و موارد بیشتر — نمودارهایی را که بیشتر می‌بینید به بالای صفحه سنجاق کنید. چک‌ها هم نمودار بررسی اجمالی خودشان را در صفحه چک‌ها دارند."
+      }
+    },
+    {
+      "icon": "doc.text.magnifyingglass",
+      "title": { "en": "Advanced Reporting", "fa": "گزارش‌گیری پیشرفته" },
+      "description": {
+        "en": "Build a report over any period — today, yesterday, the last few days, months or years, a specific month or year, or a custom range — and re-run any report you made before from your report history, with favorites and everything pre-filled.",
+        "fa": "برای هر بازه زمانی گزارش بسازید — امروز، دیروز، چند روز/ماه/سال اخیر، ماه یا سال مشخص، یا بازه دلخواه — و هر گزارشی که قبلاً ساخته‌اید را از تاریخچه گزارش‌ها دوباره اجرا کنید، همراه با نشان کردن موارد مورد علاقه و انتخاب‌های از پیش پرشده."
       }
     },
     {
@@ -70,8 +86,32 @@
       "icon": "doc.text.image",
       "title": { "en": "Export Personalizations", "fa": "شخصی‌سازی خروجی" },
       "description": {
-        "en": "Customize your exports — rename summary totals, add your own logo to PDF exports, and show amounts in red and green.",
-        "fa": "خروجی‌های خود را شخصی‌سازی کنید — عناوین جمع‌بندی را تغییر دهید، لوگوی خودتان را به فایل‌های PDF اضافه کنید و مبالغ را به رنگ قرمز و سبز نمایش دهید."
+        "en": "Customize your exports — rename summary totals, add your own logo and a custom footer to PDFs, add your own columns, choose where row numbers appear, show amounts in red and green, and append any chart as extra pages.",
+        "fa": "خروجی‌های خود را شخصی‌سازی کنید — عناوین جمع‌بندی را تغییر دهید، لوگوی خودتان و پاورقی دلخواه را به فایل‌های PDF اضافه کنید، ستون‌های دلخواه بسازید، موقعیت شماره ردیف‌ها را انتخاب کنید، مبالغ را به رنگ قرمز و سبز نمایش دهید و هر نموداری را به‌عنوان صفحات اضافه پیوست کنید."
+      }
+    },
+    {
+      "icon": "clock.arrow.circlepath",
+      "title": { "en": "Export History", "fa": "تاریخچه خروجی‌ها" },
+      "description": {
+        "en": "Every PDF and CSV you generate is saved and stays browsable from Settings, with the total storage it's using shown right at the top.",
+        "fa": "هر فایل PDF یا CSV ای که می‌گیرید ذخیره می‌شود و از تنظیمات قابل مرور می‌ماند، همراه با نمایش کل فضای اشغال‌شده در بالای صفحه."
+      }
+    },
+    {
+      "icon": "percent",
+      "title": { "en": "List Percentage", "fa": "درصد از تراکنش" },
+      "description": {
+        "en": "Apply a percentage to every transaction shown in an account and see it calculated live on each row, the running balance and the total — great for tracking commissions or fees, and it's captured in your PDF and CSV exports too.",
+        "fa": "یک درصد را روی تمام تراکنش‌های نمایش داده‌شده در یک قلک اعمال کنید و نتیجه محاسبه‌شده را به‌صورت زنده روی هر ردیف، تراز جاری و مجموع کل ببینید — مناسب برای پیگیری کمیسیون یا کارمزد، و در خروجی PDF و CSV شما هم ثبت می‌شود."
+      }
+    },
+    {
+      "icon": "checkmark.circle.fill",
+      "title": { "en": "File a Transaction When Resolving a Check", "fa": "ثبت تراکنش هنگام تسویه چک" },
+      "description": {
+        "en": "Archiving or deleting an active check offers to save a matching transaction in one of your accounts, so resolving the check and recording its money movement happen in one step.",
+        "fa": "هنگام آرشیو یا حذف یک چک فعال، پیشنهاد می‌شود یک تراکنش متناظر در یکی از قلک‌های شما ثبت شود، تا تسویه چک و ثبت جابجایی مالی آن در یک مرحله انجام شود."
       }
     },
     {
@@ -80,6 +120,22 @@
       "description": {
         "en": "Track a goal or see an account's balance and activity right from your Home Screen or Lock Screen.",
         "fa": "پیشرفت یک هدف یا موجودی و فعالیت یک قلک را مستقیماً از صفحه اصلی یا صفحه قفل خود ببینید."
+      }
+    },
+    {
+      "icon": "paintpalette.fill",
+      "title": { "en": "App Themes", "fa": "تم‌های رنگی برنامه" },
+      "description": {
+        "en": "Personalize Ghollak with different color themes, and optionally match your home-screen icon to it.",
+        "fa": "ظاهر قلک را با تم‌های رنگی مختلف شخصی‌سازی کنید و در صورت تمایل آیکون صفحه اصلی را هم‌رنگ تم کنید."
+      }
+    },
+    {
+      "icon": "folder.fill",
+      "title": { "en": "Account Folders", "fa": "پوشه‌بندی قلک‌ها" },
+      "description": {
+        "en": "Organize your accounts into folders on Home — collapse the ones you're not working with and keep a long list tidy.",
+        "fa": "قلک‌های خود را در صفحه اصلی داخل پوشه‌ها دسته‌بندی کنید — پوشه‌هایی را که با آن‌ها کار ندارید جمع کنید و فهرست بلند خود را مرتب نگه دارید."
       }
     }
   ]
