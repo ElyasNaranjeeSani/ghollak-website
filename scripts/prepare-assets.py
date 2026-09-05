@@ -16,7 +16,6 @@ from PIL import Image
 import os
 
 SRC_DIR = "/Users/elyas/Desktop/Ghollak new screenshots/iPhone final"
-ICON_MINI = "/Users/elyas/Desktop/GhollakMini.png"
 ICON_PRO = "/Users/elyas/Desktop/icon-white.jpg"
 
 OUT_GALLERY = "assets/screenshots/gallery"
@@ -82,9 +81,6 @@ def main():
     accounts_fa_gallery_im = accounts_fa.resize(GALLERY_SIZE, Image.LANCZOS)
     save_quantized(accounts_fa_gallery_im, os.path.join(OUT_GALLERY, f"{ACCOUNTS_FA_BASENAME}.png"))
     print(f"done: {ACCOUNTS_FA_BASENAME}")
-
-    mini = Image.open(ICON_MINI).convert("RGB").resize(ICON_SIZE, Image.LANCZOS)
-    mini.save(os.path.join(OUT_ICONS, "ghollak-mini-icon.png"), optimize=True)
 
     pro = Image.open(ICON_PRO).convert("RGB").resize(ICON_SIZE, Image.LANCZOS)
     pro.save(os.path.join(OUT_ICONS, "ghollak-icon.png"), optimize=True)

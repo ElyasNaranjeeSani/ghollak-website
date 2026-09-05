@@ -520,21 +520,14 @@
   <section class="hero">
     <div class="hero-inner">
       <div class="hero-copy">
-        <p class="hero-eyebrow">14+ years on the App Store (فارسی - English)</p>
-        <h1>Personal finance,<br /><em>without the panic.</em></h1>
-        <p class="hero-sub">Ghollak has been the Persian-speaking world's personal finance app since 2012 — fully bilingual in Persian and English, with support for both the Shamsi and Gregorian calendars.</p>
+        <p class="hero-eyebrow"><span class="years-since-launch">14</span>+ years on the App Store (فارسی - English)</p>
+        <h1>Personal and business finance,<br /><em>without the panic.</em></h1>
+        <p class="hero-sub">Ghollak has been the Persian-speaking world's personal and business finance app since 2012 — fully bilingual in Persian and English, with support for both the Shamsi and Gregorian calendars.</p>
         <div class="hero-downloads">
-          <a class="store-badge" href="https://apps.apple.com/us/app/ghollak-mini-english-%D9%81%D8%A7%D8%B1%D8%B3%DB%8C/id611339401" target="_blank" rel="noopener">
-            <img src="assets/icons/ghollak-mini-icon.png" alt="" class="store-badge-icon" />
-            <span class="store-badge-text">
-              <span class="store-badge-edition">Free — Ghollak Mini</span>
-              <span class="store-badge-store">Download on the App Store</span>
-            </span>
-          </a>
           <a class="store-badge" href="https://apps.apple.com/us/app/ghollak-persian-english/id544694377" target="_blank" rel="noopener">
             <img src="assets/icons/ghollak-icon.png" alt="" class="store-badge-icon" />
             <span class="store-badge-text">
-              <span class="store-badge-edition">Pro — Ghollak</span>
+              <span class="store-badge-edition">Ghollak — Available For Free</span>
               <span class="store-badge-store">Download on the App Store</span>
             </span>
           </a>
@@ -604,7 +597,7 @@
       </div>
       <div>
         <h3>See the full picture, in any calendar</h3>
-        <p>Visual charts break down income and expenses at a glance, and Pro reports let you build custom breakdowns over any date range — in either the Shamsi or Gregorian calendar.</p>
+        <p>Visual charts break down income and expenses at a glance, and the full version lets you build custom breakdowns over any date range — in either the Shamsi or Gregorian calendar.</p>
       </div>
     </div>
   </section>
@@ -625,7 +618,7 @@
   <!-- FACTS -->
   <div class="facts">
     <div class="fact">
-      <p class="fact-headline">14+ Years</p>
+      <p class="fact-headline"><span class="years-since-launch">14</span>+ Years</p>
       <p class="fact-caption">On the App Store, since 2012</p>
     </div>
     <div class="fact">
@@ -637,8 +630,8 @@
       <p class="fact-caption">Use the app in either language</p>
     </div>
     <div class="fact">
-      <p class="fact-headline">Free &amp; Pro</p>
-      <p class="fact-caption">Ghollak Mini or the full app</p>
+      <p class="fact-headline">Free &amp; Full</p>
+      <p class="fact-caption">Free to start, upgrade in-app</p>
     </div>
   </div>
 
@@ -725,6 +718,19 @@
       btn.disabled = false;
       btn.textContent = 'Send message';
     }
+  </script>
+
+  <script>
+    // Keeps the "14+ years on the App Store" counts current: Ghollak launched
+    // on the App Store in 2012, so the number bumps itself every new year.
+    (function () {
+      const LAUNCH_YEAR = 2012;
+      const years = new Date().getFullYear() - LAUNCH_YEAR;
+      if (years < 1) return;
+      document.querySelectorAll('.years-since-launch').forEach(function (el) {
+        el.textContent = String(years);
+      });
+    })();
   </script>
 
 </body>
