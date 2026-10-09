@@ -235,7 +235,7 @@
   },
   "consent": {
     "label": "Cookie consent",
-    "text": "We use Google Analytics cookies only to count visits and App Store clicks.",
+    "text": "We use cookies only for website analytics — never for ads, and never linked to your Ghollak data.",
     "more": "Privacy Policy",
     "accept": "Accept",
     "decline": "Decline"
