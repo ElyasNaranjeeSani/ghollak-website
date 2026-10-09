@@ -44,19 +44,42 @@
   </script>
   <script>
     // Visit counting for the Firebase project "ghollak-50022" (Google Analytics 4
-    // web stream). Only page views and App Store button clicks are sent —
-    // see the click handler at the bottom. Nothing loads off the live domain,
-    // so local previews never count as visits.
+    // web stream). Only page views and App Store button clicks are sent — see
+    // the click handler at the bottom. Nothing loads off the live domain, so
+    // local previews never count as visits.
+    //
+    // Visitors whose device time zone is in the EU/EEA, UK or Switzerland must
+    // opt in first (cookie consent); for them analytics only loads after they
+    // press Accept on the consent bar. Everyone else is counted straight away.
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-SFTJBK1V31', { allow_google_signals: false, allow_ad_personalization_signals: false });
-    if (['ghollak.app', 'www.ghollak.app'].indexOf(location.hostname) !== -1) {
+    window.ghollakLoadAnalytics = function () {
+      if (window.ghollakAnalyticsLoaded || ['ghollak.app', 'www.ghollak.app'].indexOf(location.hostname) === -1) return;
+      window.ghollakAnalyticsLoaded = true;
       var ga = document.createElement('script');
       ga.async = true;
       ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-SFTJBK1V31';
       document.head.appendChild(ga);
-    }
+    };
+    // European zones outside the EU/EEA/UK/CH (no consent law to follow there).
+    var NON_EEA_EUROPE = ['Europe/Istanbul', 'Europe/Moscow', 'Europe/Kaliningrad', 'Europe/Samara', 'Europe/Volgograd',
+      'Europe/Saratov', 'Europe/Ulyanovsk', 'Europe/Astrakhan', 'Europe/Kirov', 'Europe/Minsk', 'Europe/Kyiv',
+      'Europe/Kiev', 'Europe/Simferopol', 'Europe/Chisinau', 'Europe/Tiraspol'];
+    window.ghollakNeedsConsentFor = function (tz) {
+      tz = tz || '';
+      var eea = tz.indexOf('Europe/') === 0 || ['Atlantic/Canary', 'Atlantic/Madeira', 'Atlantic/Azores',
+        'Atlantic/Reykjavik', 'Arctic/Longyearbyen'].indexOf(tz) !== -1;
+      return eea && NON_EEA_EUROPE.indexOf(tz) === -1;
+    };
+    (function () {
+      var tz = '', consent = null;
+      try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone; } catch (e) {}
+      try { consent = localStorage.getItem('ghollak-consent'); } catch (e) {}
+      if (!window.ghollakNeedsConsentFor(tz) || consent === 'granted') window.ghollakLoadAnalytics();
+      else if (consent !== 'denied') document.documentElement.classList.add('needs-consent');
+    })();
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -435,6 +458,22 @@
     .lang-picker-note { font-size: .8rem; color: var(--ink-soft); }
     @keyframes pop { from { opacity: 0; transform: translateY(14px) scale(.98); } }
 
+    /* ── cookie consent (European visitors only) ── */
+    .consent {
+      position: fixed; z-index: 90; inset-inline: 16px; bottom: 16px; margin-inline: auto; max-width: 560px;
+      display: none; align-items: center; gap: .75rem 1rem; flex-wrap: wrap;
+      background: var(--night); color: #f4ead6; border: 1px solid rgba(201, 154, 46, .4);
+      border-radius: 18px; padding: .9rem 1rem .9rem 1.2rem; font-size: .88rem; line-height: 1.5;
+      box-shadow: 0 24px 50px -20px rgba(36, 28, 19, .7);
+    }
+    .needs-consent .consent { display: flex; }
+    .consent p { flex: 1 1 260px; }
+    .consent a { color: var(--gold-bright); }
+    .consent-actions { display: flex; gap: .5rem; }
+    .consent button { font: inherit; font-weight: 700; cursor: pointer; border-radius: 999px; padding: .5rem 1rem; }
+    .consent-decline { background: transparent; color: #f4ead6; border: 1px solid rgba(244, 234, 214, .35); }
+    .consent .btn-gold { font-size: .88rem; }
+
     /* ── reveal on scroll ── */
     .js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s var(--ease), transform .65s var(--ease); transition-delay: calc(var(--i, 0) * 80ms); }
     .js .reveal.in { opacity: 1; transform: none; }
@@ -502,6 +541,13 @@
 </head>
 <body>
   
+  <div class="consent" role="region" aria-label="الموافقة على ملفات تعريف الارتباط">
+    <p>نستخدم ملفات تعريف الارتباط من Google Analytics فقط لعدّ الزيارات ونقرات التحميل. <a href="/privacy-policy.html">سياسة الخصوصية</a></p>
+    <div class="consent-actions">
+      <button type="button" class="consent-decline" data-consent="denied">لا، شكراً</button>
+      <button type="button" class="btn-gold" data-consent="granted">موافق</button>
+    </div>
+  </div>
 
   <header class="nav" id="top">
     <div class="wrap nav-inner">
@@ -749,6 +795,15 @@
           document.documentElement.classList.remove('needs-lang');
         });
       }
+
+      // Consent bar answers are remembered; Accept starts analytics right away.
+      document.addEventListener('click', function (e) {
+        var choice = e.target.closest('[data-consent]');
+        if (!choice) return;
+        try { localStorage.setItem('ghollak-consent', choice.dataset.consent); } catch (err) {}
+        document.documentElement.classList.remove('needs-consent');
+        if (choice.dataset.consent === 'granted') window.ghollakLoadAnalytics();
+      });
 
       // Analytics: count App Store button clicks, and which button it was.
       document.addEventListener('click', function (e) {

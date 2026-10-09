@@ -218,6 +218,19 @@ class RealPageTests(unittest.TestCase):
         self.assertIn("allow_google_signals: false", html)
         self.assertIn("'ghollak.app'", html)
 
+    def test_consent_banner_rendered_in_every_language_with_policy_link(self):
+        for lang in bs.LANGS:
+            html = bs.render_page(lang)
+            self.assertIn('class="consent"', html, lang)
+            self.assertIn('data-consent="granted"', html, lang)
+            self.assertIn('data-consent="denied"', html, lang)
+            self.assertIn('href="/privacy-policy.html"', html.split('class="consent"')[1].split("</div>")[0], lang)
+
+    def test_non_eea_european_time_zones_are_excluded_from_consent(self):
+        html = bs.render_page("fa")
+        for tz in ("Europe/Istanbul", "Europe/Moscow", "Europe/Kyiv"):
+            self.assertIn(tz, html)
+
 
 if __name__ == "__main__":
     unittest.main()

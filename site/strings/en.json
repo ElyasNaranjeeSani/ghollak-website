@@ -232,5 +232,12 @@
     "08-charts": "Charts screen with an expense breakdown pie chart",
     "09-pdf-settings": "PDF export settings: logo, title, colors and columns",
     "10-pdf-export": "A branded PDF invoice report with your logo, ready to share"
+  },
+  "consent": {
+    "label": "Cookie consent",
+    "text": "We use Google Analytics cookies only to count visits and App Store clicks.",
+    "more": "Privacy Policy",
+    "accept": "Accept",
+    "decline": "Decline"
   }
 }
