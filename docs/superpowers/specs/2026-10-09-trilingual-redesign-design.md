@@ -54,9 +54,17 @@ screenshots, one clear download CTA.
 5. **Languages & calendars** — today's date rendered live via
    `Intl.DateTimeFormat` in Persian (Jalali), Gregorian and Hijri, beside the
    three language names.
-6. **Free vs Full** — two cards; Full lists benefits from
-   `full-version-benefits.json` (copied into the strings file at build time,
-   en/fa from the JSON, ar translated). CTA: free to download, upgrade any time.
+6. **Plans: Free / Pro / Business** — three cards mirroring the app's own
+   `PaywallFeatureCatalog` (Ghollak repo), not the older two-tier
+   `full-version-benefits.json`. Free: 2 accounts & checks, 3 reminders,
+   3 recurring, 2 people, 3 exports/month, store demo. Pro: unlimited
+   accounts/checks/reminders/recurring/people, iCloud sync, backup & restore,
+   multi-currency, tags, 10 exports/month. Business: everything in Pro + store
+   management with barcode, branded PDF reports, custom totals & balance row,
+   account folders, business-mode charts, chart export, list percentage,
+   Ghollak Buddy, unlimited exports & history. Messaging: one-time purchase,
+   no subscription; no prices shown (they vary by region). fa/ar wording
+   reuses the app's own `Localizable.xcstrings` translations.
 7. **Contact** — restyled form, same logic, localized labels/status messages.
 8. **Footer** — Ghollak privacy policy; small muted "Other apps' policies:
    Tavallod · Yadavar"; © line.
