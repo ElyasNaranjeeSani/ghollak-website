@@ -32,6 +32,14 @@ class RenderTests(unittest.TestCase):
         self.assertIn("ar", str(cm.exception))
         self.assertIn("nav.nope", str(cm.exception))
 
+    def test_empty_string_raises(self):
+        with self.assertRaises(bs.BuildError) as cm:
+            bs.render("{{t:a.b}}", {"a": {"b": "  "}}, "fa", {})
+        self.assertIn("a.b", str(cm.exception))
+
+    def test_empty_store_badge_kicker_is_allowed(self):
+        self.assertEqual(bs.render("[{{t:store_badge.kicker}}]", {"store_badge": {"kicker": ""}}, "fa", {}), "[]")
+
     def test_unknown_block_raises(self):
         with self.assertRaises(bs.BuildError):
             bs.render("{{block:ghost}}", {}, "en", {})
@@ -74,6 +82,14 @@ class PageTests(unittest.TestCase):
         self.assertIn("hi-fa", open(os.path.join(root, "index.html")).read())
         self.assertIn("hi-en", open(os.path.join(root, "en", "index.html")).read())
         self.assertIn("hi-ar", open(os.path.join(root, "ar", "index.html")).read())
+
+    def test_failed_build_writes_no_pages(self):
+        root = self.make_root()
+        with open(os.path.join(root, "site", "strings", "en.json"), "w") as f:
+            json.dump({}, f)
+        with self.assertRaises(bs.BuildError):
+            bs.build(["fa", "en", "ar"], root)
+        self.assertFalse(os.path.exists(os.path.join(root, "index.html")))
 
     def test_build_subset_leaves_other_pages_alone(self):
         root = self.make_root()

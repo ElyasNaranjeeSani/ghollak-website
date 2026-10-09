@@ -33,9 +33,12 @@
     (function () {
       var root = document.documentElement, stored;
       root.classList.add('js');
-      try { stored = localStorage.getItem('ghollak-lang'); } catch (e) { return; }
+      try {
+        stored = localStorage.getItem('ghollak-lang');
+        localStorage.setItem('ghollak-probe', '1'); localStorage.removeItem('ghollak-probe');
+      } catch (e) { return; }
       if (root.lang !== 'fa') return;
-      if (stored === 'en' || stored === 'ar') { location.replace('/' + stored + '/' + location.hash); return; }
+      if (stored === 'en' || stored === 'ar') { location.replace('/' + stored + '/' + location.search + location.hash); return; }
       if (!stored) root.classList.add('needs-lang');
     })();
   </script>
@@ -98,7 +101,7 @@
     .store-badge {
       display: inline-flex; align-items: center; gap: .7rem;
       background: var(--night); color: #fff; text-decoration: none;
-      border-radius: 14px; padding: .65rem 1.25rem .65rem 1rem;
+      border-radius: 14px; padding-block: .65rem; padding-inline: 1rem 1.25rem;
       box-shadow: 0 10px 30px -12px rgba(36, 28, 19, .6);
       transition: transform .25s var(--ease), box-shadow .25s var(--ease);
     }
@@ -237,13 +240,13 @@
     }
     .stage-phone { height: 100%; width: auto; }
     .stage-phone img { opacity: 0; transform: scale(1.02); transition: opacity .55s var(--ease), transform .7s var(--ease); }
-    .stage-phone img.is-on { opacity: 1; transform: none; }
+    .stage-phone img.is-on, html:not(.js) .stage-phone img:first-child { opacity: 1; transform: none; }
     .chapter { position: relative; min-height: calc(var(--shots) * 52vh + 28vh); }
     .marks { position: absolute; inset: 0; display: flex; flex-direction: column; pointer-events: none; }
     .mark { flex: 1; }
     .chapter-copy {
       position: sticky; top: 30vh; padding: 1.5rem 0 3rem; max-width: 30rem;
-      opacity: .32; transition: opacity .5s var(--ease);
+      opacity: .5; transition: opacity .5s var(--ease);
     }
     .chapter.is-active .chapter-copy { opacity: 1; }
     .chapter-kicker {
@@ -270,7 +273,8 @@
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.5l3 3 6-7' fill='none' stroke='%237d5b10' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
       background-size: 100%;
     }
-    .chapter-shots { display: none; }
+    .chapter-shots { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
     /* ── little things ── */
     .little { padding: 90px 0 110px; }
@@ -375,7 +379,7 @@
     .form-field textarea { min-height: 140px; resize: vertical; }
     .submit-btn { justify-self: start; padding: .8rem 1.6rem; font-size: 1rem; }
     .submit-btn:disabled { opacity: .6; cursor: default; transform: none; }
-    #form-status { font-size: .9rem; font-weight: 600; color: var(--gold-deep); display: none; }
+    #form-status { font-size: .9rem; font-weight: 600; color: var(--gold-deep); min-height: 1.4em; }
 
     /* ── footer ── */
     footer { border-top: 1px solid var(--line); padding: 2.5rem 0 3rem; font-size: .9rem; color: var(--ink-soft); }
@@ -441,6 +445,7 @@
       .chapter:first-child { border-top: 0; }
       .chapter-copy { position: static; opacity: 1; padding: 0; max-width: none; }
       .chapter-shots {
+        position: static; width: auto; height: auto; clip-path: none; white-space: normal;
         display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory;
         margin: 1.75rem -24px 0; padding: 0 24px 1.5rem; scrollbar-width: none;
       }
@@ -475,6 +480,7 @@
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation: none !important; transition: none !important; }
       .js .reveal { opacity: 1; transform: none; }
+      .chapter-copy { opacity: 1; }
     }
   </style>
 </head>
@@ -491,7 +497,7 @@
       </nav>
       <div class="nav-end">
         <details class="lang-menu">
-          <summary aria-label="زبان"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3Z"/></svg>فارسی</summary>
+          <summary><span class="sr-only">زبان: </span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3Z"/></svg>فارسی</summary>
           <div class="lang-list"><a href="/" lang="fa" hreflang="fa" aria-current="true" data-lang="fa">فارسی</a><a href="/en/" lang="en" hreflang="en" data-lang="en">English</a><a href="/ar/" lang="ar" hreflang="ar" data-lang="ar">العربية</a></div>
         </details>
         <a class="btn-gold" href="https://apps.apple.com/us/app/ghollak-persian-english/id544694377" target="_blank" rel="noopener">دانلود</a>
@@ -530,7 +536,7 @@
           <p class="lead">با یک قلک شروع کنید و تا یک فروشگاه کامل پیش بروید. قلک همراهتان بزرگ می‌شود.</p>
         </header>
         <div class="chapters-grid">
-          <div class="stage"><div class="phone stage-phone"><div class="phone-screen"><img src="/assets/screens/fa/01-home.webp" alt="صفحهٔ اصلی با تراز کل، تراکنش‌های پیش رو و کارت قلک‌ها" width="660" height="1435" loading="lazy" decoding="async" data-shot="01-home" /><img src="/assets/screens/fa/13-goal-folders.webp" alt="قلک‌ها در پوشه‌ها همراه با پیشرفت هدف پس‌انداز" width="660" height="1435" loading="lazy" decoding="async" data-shot="13-goal-folders" /><img src="/assets/screens/fa/02-account.webp" alt="یک قلک با پیشرفت هدف پس‌انداز و تراکنش‌ها" width="660" height="1435" loading="lazy" decoding="async" data-shot="02-account" /><img src="/assets/screens/fa/05-ledger.webp" alt="دفتر اشخاص با جمع طلب و بدهی" width="660" height="1435" loading="lazy" decoding="async" data-shot="05-ledger" /><img src="/assets/screens/fa/03-store.webp" alt="داشبورد فروشگاه با ارزش موجودی، فروش و سود ماه" width="660" height="1435" loading="lazy" decoding="async" data-shot="03-store" /><img src="/assets/screens/fa/08-invoice.webp" alt="جزئیات فاکتور فروش با اقلام و جمع" width="660" height="1435" loading="lazy" decoding="async" data-shot="08-invoice" /><img src="/assets/screens/fa/15-product-stock-card.webp" alt="کاردکس کالا با موجودی، میانگین قیمت خرید و سود ناخالص" width="660" height="1435" loading="lazy" decoding="async" data-shot="15-product-stock-card" /><img src="/assets/screens/fa/06-checks.webp" alt="فهرست چک‌ها با مبلغ و تاریخ سررسید" width="660" height="1435" loading="lazy" decoding="async" data-shot="06-checks" /><img src="/assets/screens/fa/09-reminders.webp" alt="فهرست یادآورها" width="660" height="1435" loading="lazy" decoding="async" data-shot="09-reminders" /><img src="/assets/screens/fa/12-business-charts.webp" alt="نمودارهای حالت کسب‌وکار: روند درآمد و هزینه" width="660" height="1435" loading="lazy" decoding="async" data-shot="12-business-charts" /><img src="/assets/screens/fa/10-pdf-settings.webp" alt="تنظیمات خروجی PDF: لوگو، عنوان، رنگ‌ها و ستون‌ها" width="660" height="1435" loading="lazy" decoding="async" data-shot="10-pdf-settings" /><img src="/assets/screens/fa/11-pdf-export.webp" alt="گزارش PDF حرفه‌ای با لوگوی شما" width="660" height="1435" loading="lazy" decoding="async" data-shot="11-pdf-export" /><img src="/assets/screens/fa/14-export-history.webp" alt="تاریخچهٔ خروجی‌های قبلی" width="660" height="1435" loading="lazy" decoding="async" data-shot="14-export-history" /></div></div></div>
+          <div class="stage" aria-hidden="true"><div class="phone stage-phone"><div class="phone-screen"><img src="/assets/screens/fa/01-home.webp" alt="صفحهٔ اصلی با تراز کل، تراکنش‌های پیش رو و کارت قلک‌ها" width="660" height="1435" loading="lazy" decoding="async" data-shot="01-home" /><img src="/assets/screens/fa/13-goal-folders.webp" alt="قلک‌ها در پوشه‌ها همراه با پیشرفت هدف پس‌انداز" width="660" height="1435" loading="lazy" decoding="async" data-shot="13-goal-folders" /><img src="/assets/screens/fa/02-account.webp" alt="یک قلک با پیشرفت هدف پس‌انداز و تراکنش‌ها" width="660" height="1435" loading="lazy" decoding="async" data-shot="02-account" /><img src="/assets/screens/fa/05-ledger.webp" alt="دفتر اشخاص با جمع طلب و بدهی" width="660" height="1435" loading="lazy" decoding="async" data-shot="05-ledger" /><img src="/assets/screens/fa/03-store.webp" alt="داشبورد فروشگاه با ارزش موجودی، فروش و سود ماه" width="660" height="1435" loading="lazy" decoding="async" data-shot="03-store" /><img src="/assets/screens/fa/08-invoice.webp" alt="جزئیات فاکتور فروش با اقلام و جمع" width="660" height="1435" loading="lazy" decoding="async" data-shot="08-invoice" /><img src="/assets/screens/fa/15-product-stock-card.webp" alt="کاردکس کالا با موجودی، میانگین قیمت خرید و سود ناخالص" width="660" height="1435" loading="lazy" decoding="async" data-shot="15-product-stock-card" /><img src="/assets/screens/fa/06-checks.webp" alt="فهرست چک‌ها با مبلغ و تاریخ سررسید" width="660" height="1435" loading="lazy" decoding="async" data-shot="06-checks" /><img src="/assets/screens/fa/09-reminders.webp" alt="فهرست یادآورها" width="660" height="1435" loading="lazy" decoding="async" data-shot="09-reminders" /><img src="/assets/screens/fa/12-business-charts.webp" alt="نمودارهای حالت کسب‌وکار: روند درآمد و هزینه" width="660" height="1435" loading="lazy" decoding="async" data-shot="12-business-charts" /><img src="/assets/screens/fa/10-pdf-settings.webp" alt="تنظیمات خروجی PDF: لوگو، عنوان، رنگ‌ها و ستون‌ها" width="660" height="1435" loading="lazy" decoding="async" data-shot="10-pdf-settings" /><img src="/assets/screens/fa/11-pdf-export.webp" alt="گزارش PDF حرفه‌ای با لوگوی شما" width="660" height="1435" loading="lazy" decoding="async" data-shot="11-pdf-export" /><img src="/assets/screens/fa/14-export-history.webp" alt="تاریخچهٔ خروجی‌های قبلی" width="660" height="1435" loading="lazy" decoding="async" data-shot="14-export-history" /></div></div></div>
           <div class="chapter-list">
             <article class="chapter" id="accounts" style="--shots:3"><div class="marks" aria-hidden="true"><i class="mark" data-shot="01-home"></i><i class="mark" data-shot="13-goal-folders"></i><i class="mark" data-shot="02-account"></i></div><div class="chapter-copy"><p class="chapter-kicker"><span class="chapter-num">۰۱</span>قلک‌ها و تراکنش‌ها</p><h3>همهٔ پولتان را یک‌جا ببینید.</h3><p class="chapter-body">قلک با هر ارزی، خلاصهٔ روزانهٔ تراکنش‌های پیش رو، هدف پس‌اندازی که کم‌کم پر می‌شود و تراکنش‌های تکرارشونده‌ای که خودشان ثبت می‌شوند.</p><ul class="ticks"><li>چند قلک با ارزهای مختلف</li><li>هدف پس‌انداز برای هر قلک</li><li>تراکنش تکرارشونده و انتقال بین قلک‌ها</li></ul></div><div class="chapter-shots"><div class="phone"><div class="phone-screen"><img src="/assets/screens/fa/01-home.webp" alt="صفحهٔ اصلی با تراز کل، تراکنش‌های پیش رو و کارت قلک‌ها" width="660" height="1435" loading="lazy" decoding="async" data-shot="01-home" /></div></div><div class="phone"><div class="phone-screen"><img src="/assets/screens/fa/13-goal-folders.webp" alt="قلک‌ها در پوشه‌ها همراه با پیشرفت هدف پس‌انداز" width="660" height="1435" loading="lazy" decoding="async" data-shot="13-goal-folders" /></div></div><div class="phone"><div class="phone-screen"><img src="/assets/screens/fa/02-account.webp" alt="یک قلک با پیشرفت هدف پس‌انداز و تراکنش‌ها" width="660" height="1435" loading="lazy" decoding="async" data-shot="02-account" /></div></div></div></article>
 <article class="chapter" id="people" style="--shots:1"><div class="marks" aria-hidden="true"><i class="mark" data-shot="05-ledger"></i></div><div class="chapter-copy"><p class="chapter-kicker"><span class="chapter-num">۰۲</span>اشخاص</p><h3>بدانید چه کسی به چه کسی بدهکار است.</h3><p class="chapter-body">برای هر شخص یک دفتر: چه دادید، چه برگشت و چقدر مانده است. با یک ضربه تسویه کنید و صورت‌حسابی مرتب برایش بفرستید.</p><ul class="ticks"><li>طلب و بدهی هر شخص</li><li>ثبت تسویه در قلک‌هایتان</li><li>صورت‌حساب قابل اشتراک‌گذاری</li></ul></div><div class="chapter-shots"><div class="phone"><div class="phone-screen"><img src="/assets/screens/fa/05-ledger.webp" alt="دفتر اشخاص با جمع طلب و بدهی" width="660" height="1435" loading="lazy" decoding="async" data-shot="05-ledger" /></div></div></div></article>
@@ -715,6 +721,18 @@
           document.documentElement.classList.remove('needs-lang');
         }
       });
+
+      // First-visit picker: move focus into it, and let Escape keep Persian.
+      var picker = document.querySelector('.lang-picker');
+      if (picker && document.documentElement.classList.contains('needs-lang')) {
+        var firstChoice = picker.querySelector('.lang-choice');
+        if (firstChoice) firstChoice.focus();
+        document.addEventListener('keydown', function (e) {
+          if (e.key !== 'Escape' || !document.documentElement.classList.contains('needs-lang')) return;
+          try { localStorage.setItem('ghollak-lang', 'fa'); } catch (err) {}
+          document.documentElement.classList.remove('needs-lang');
+        });
+      }
 
       // Years on the App Store (launched 2012) and the © year stay current.
       var now = new Date();

@@ -54,10 +54,17 @@ def lookup(strings, key, lang):
     return node
 
 
+# Strings allowed to be empty on purpose (an empty badge kicker gives the
+# one-line Persian App Store badge). Anything else empty is a typo.
+MAY_BE_EMPTY = {"store_badge.kicker"}
+
+
 def text(strings, key, lang):
     value = lookup(strings, key, lang)
     if not isinstance(value, str):
         raise BuildError(f"[{lang}] {key} is not a string")
+    if not value.strip() and key not in MAY_BE_EMPTY:
+        raise BuildError(f"[{lang}] empty string: {key}")
     return value
 
 
@@ -309,8 +316,10 @@ def output_path(lang, root=ROOT):
 
 
 def build(langs, root=ROOT):
-    for lang in langs:
-        page = render_page(lang, root)
+    # Render every page before writing any, so a broken language file never
+    # leaves the site half-updated.
+    pages = {lang: render_page(lang, root) for lang in langs}
+    for lang, page in pages.items():
         path = output_path(lang, root)
         os.makedirs(os.path.dirname(path), exist_ok=True)
         with open(path, "w", encoding="utf-8") as f:
