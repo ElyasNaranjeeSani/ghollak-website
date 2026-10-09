@@ -178,10 +178,14 @@ APPLE_LOGO = ('<path d="M16.37 1.43c0 1.14-.49 2.27-1.18 3.08-.74.9-1.99 1.57-2.
 
 
 def block_store_badge(strings, lang):
+    # An empty kicker gives a one-line badge (Persian reads better as
+    # «دانلود از اپ‌استور» on one line than split over two).
+    kicker = text(strings, "store_badge.kicker", lang)
+    store = esc(text(strings, "store_badge.store", lang))
+    label = (f"<span><small>{esc(kicker)}</small><strong>{store}</strong></span>" if kicker
+             else f'<span class="store-badge-single"><strong>{store}</strong></span>')
     return (f'<a class="store-badge" href="{APP_STORE_URL}" target="_blank" rel="noopener">'
-            f'<svg viewBox="0 0 24 24" aria-hidden="true">{APPLE_LOGO}</svg>'
-            f'<span><small>{esc(text(strings, "store_badge.kicker", lang))}</small>'
-            f'<strong>{esc(text(strings, "store_badge.store", lang))}</strong></span></a>')
+            f'<svg viewBox="0 0 24 24" aria-hidden="true">{APPLE_LOGO}</svg>{label}</a>')
 
 
 def block_hero_phones(strings, lang):

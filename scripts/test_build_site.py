@@ -147,6 +147,11 @@ class BlockTests(unittest.TestCase):
         self.assertIn('href="https://apps.apple.com/us/app/ghollak-persian-english/id544694377"', html)
         self.assertIn("اپ‌استور", html)
 
+    def test_store_badge_is_single_line_when_kicker_is_empty(self):
+        html = bs.block_store_badge({"store_badge": {"kicker": "", "store": "دانلود از اپ‌استور"}}, "fa")
+        self.assertNotIn("<small>", html)
+        self.assertIn("store-badge-single", html)
+
     def test_overlay_only_on_persian_root(self):
         s = {"picker": {"title": "t", "note": "n"}}
         self.assertIn("lang-picker", bs.block_lang_overlay(s, "fa"))
