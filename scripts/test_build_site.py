@@ -184,12 +184,12 @@ class BlockTests(unittest.TestCase):
 
     def test_store_badge_links_to_app_store_with_localized_text(self):
         s = {"store_badge": {"kicker": "دانلود از", "store": "اپ‌استور"}}
-        html = bs.block_store_badge(s, "fa")
+        html = bs.block_store_badge(s, "fa", "hero")
         self.assertIn('href="https://apps.apple.com/us/app/ghollak-persian-english/id544694377"', html)
         self.assertIn("اپ‌استور", html)
 
     def test_store_badge_is_single_line_when_kicker_is_empty(self):
-        html = bs.block_store_badge({"store_badge": {"kicker": "", "store": "دانلود از اپ‌استور"}}, "fa")
+        html = bs.block_store_badge({"store_badge": {"kicker": "", "store": "دانلود از اپ‌استور"}}, "fa", "hero")
         self.assertNotIn("<small>", html)
         self.assertIn("store-badge-single", html)
 
@@ -197,6 +197,26 @@ class BlockTests(unittest.TestCase):
         s = {"picker": {"title": "t", "note": "n"}}
         self.assertIn("lang-picker", bs.block_lang_overlay(s, "fa"))
         self.assertEqual(bs.block_lang_overlay(s, "en"), "")
+
+
+
+class RealPageTests(unittest.TestCase):
+    """Checks against the real template and strings in this repo."""
+
+    def test_every_app_store_link_sits_in_a_tracked_placement(self):
+        import re
+        for lang in bs.LANGS:
+            html = bs.render_page(lang)
+            links = re.findall(r'<a [^>]*apps\.apple\.com[^>]*>', html)
+            self.assertEqual(len(links), 3, lang)
+            for link in links:
+                self.assertRegex(link, r'data-placement="(nav|hero|plans)"', f"{lang}: {link}")
+
+    def test_analytics_uses_firebase_measurement_id_only_on_live_host(self):
+        html = bs.render_page("en")
+        self.assertIn("G-SFTJBK1V31", html)
+        self.assertIn("allow_google_signals: false", html)
+        self.assertIn("'ghollak.app'", html)
 
 
 if __name__ == "__main__":

@@ -39,6 +39,22 @@
       if (!stored) root.classList.add('needs-lang');
     })();
   </script>
+  <script>
+    // Visit counting for the Firebase project "ghollak-50022" (Google Analytics 4
+    // web stream). Only page views and App Store button clicks are sent —
+    // see the click handler at the bottom. Nothing loads off the live domain,
+    // so local previews never count as visits.
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-SFTJBK1V31', { allow_google_signals: false, allow_ad_personalization_signals: false });
+    if (['ghollak.app', 'www.ghollak.app'].indexOf(location.hostname) !== -1) {
+      var ga = document.createElement('script');
+      ga.async = true;
+      ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-SFTJBK1V31';
+      document.head.appendChild(ga);
+    }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="{{t:meta.fonts_href}}" rel="stylesheet" />
@@ -497,7 +513,7 @@
           <summary><span class="sr-only">{{t:nav.language}}: </span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3Z"/></svg>{{t:_native}}</summary>
           <div class="lang-list">{{block:lang_switch}}</div>
         </details>
-        <a class="btn-gold" href="https://apps.apple.com/us/app/ghollak-persian-english/id544694377" target="_blank" rel="noopener">{{t:nav.download}}</a>
+        <a class="btn-gold" href="https://apps.apple.com/us/app/ghollak-persian-english/id544694377" target="_blank" rel="noopener" data-placement="nav">{{t:nav.download}}</a>
       </div>
     </div>
   </header>
@@ -511,7 +527,7 @@
           <h1>{{h:hero.title_html}}</h1>
           <p class="lead">{{t:hero.sub}}</p>
           <div class="hero-cta">
-            {{block:store_badge}}
+            {{block:store_badge_hero}}
             <a class="link-arrow" href="#features">{{t:hero.secondary}} <span aria-hidden="true">↓</span></a>
           </div>
           <p class="free-note">{{t:hero.free_note}}</p>
@@ -577,7 +593,7 @@
           {{block:plans}}
         </div>
         <div class="plans-cta reveal">
-          {{block:store_badge}}
+          {{block:store_badge_plans}}
           <p class="plans-note">{{t:plans.note}}</p>
         </div>
       </div>
@@ -717,6 +733,12 @@
           document.documentElement.classList.remove('needs-lang');
         });
       }
+
+      // Analytics: count App Store button clicks, and which button it was.
+      document.addEventListener('click', function (e) {
+        var link = e.target.closest('a[data-placement]');
+        if (link) gtag('event', 'app_store_click', { placement: link.dataset.placement, page_language: lang });
+      });
 
       // Years on the App Store (launched 2012) and the © year stay current.
       var now = new Date();

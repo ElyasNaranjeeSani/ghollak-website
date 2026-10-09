@@ -42,6 +42,22 @@
       if (!stored) root.classList.add('needs-lang');
     })();
   </script>
+  <script>
+    // Visit counting for the Firebase project "ghollak-50022" (Google Analytics 4
+    // web stream). Only page views and App Store button clicks are sent —
+    // see the click handler at the bottom. Nothing loads off the live domain,
+    // so local previews never count as visits.
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-SFTJBK1V31', { allow_google_signals: false, allow_ad_personalization_signals: false });
+    if (['ghollak.app', 'www.ghollak.app'].indexOf(location.hostname) !== -1) {
+      var ga = document.createElement('script');
+      ga.async = true;
+      ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-SFTJBK1V31';
+      document.head.appendChild(ga);
+    }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
@@ -500,7 +516,7 @@
           <summary><span class="sr-only">Language: </span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3Z"/></svg>English</summary>
           <div class="lang-list"><a href="/" lang="fa" hreflang="fa" data-lang="fa">فارسی</a><a href="/en/" lang="en" hreflang="en" aria-current="true" data-lang="en">English</a><a href="/ar/" lang="ar" hreflang="ar" data-lang="ar">العربية</a></div>
         </details>
-        <a class="btn-gold" href="https://apps.apple.com/us/app/ghollak-persian-english/id544694377" target="_blank" rel="noopener">Download</a>
+        <a class="btn-gold" href="https://apps.apple.com/us/app/ghollak-persian-english/id544694377" target="_blank" rel="noopener" data-placement="nav">Download</a>
       </div>
     </div>
   </header>
@@ -514,7 +530,7 @@
           <h1>Simple as a piggy bank.<br><em>Complete as a ledger.</em></h1>
           <p class="lead">Your personal money and your business in one calm app — accounts, the people who owe you, your store, checks and reports you&#x27;d be proud to send.</p>
           <div class="hero-cta">
-            <a class="store-badge" href="https://apps.apple.com/us/app/ghollak-persian-english/id544694377" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 1.43c0 1.14-.49 2.27-1.18 3.08-.74.9-1.99 1.57-2.99 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.57-2.27 1.21-2.98.8-.94 2.14-1.64 3.25-1.68.03.13.05.28.05.43zm4.56 15.71c-.03.07-.46 1.58-1.52 3.12-.94 1.34-1.94 2.71-3.43 2.71-1.52 0-1.9-.88-3.63-.88-1.7 0-2.3.91-3.67.91-1.38 0-2.33-1.26-3.43-2.8-1.29-1.82-2.32-4.63-2.32-7.28 0-4.28 2.8-6.55 5.55-6.55 1.45 0 2.68.95 3.6.95.87 0 2.22-1.01 3.9-1.01.61 0 2.89.06 4.37 2.19-.13.09-2.38 1.37-2.38 4.19 0 3.26 2.85 4.42 2.96 4.45z"/></svg><span><small>Download on the</small><strong>App Store</strong></span></a>
+            <a class="store-badge" href="https://apps.apple.com/us/app/ghollak-persian-english/id544694377" target="_blank" rel="noopener" data-placement="hero"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 1.43c0 1.14-.49 2.27-1.18 3.08-.74.9-1.99 1.57-2.99 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.57-2.27 1.21-2.98.8-.94 2.14-1.64 3.25-1.68.03.13.05.28.05.43zm4.56 15.71c-.03.07-.46 1.58-1.52 3.12-.94 1.34-1.94 2.71-3.43 2.71-1.52 0-1.9-.88-3.63-.88-1.7 0-2.3.91-3.67.91-1.38 0-2.33-1.26-3.43-2.8-1.29-1.82-2.32-4.63-2.32-7.28 0-4.28 2.8-6.55 5.55-6.55 1.45 0 2.68.95 3.6.95.87 0 2.22-1.01 3.9-1.01.61 0 2.89.06 4.37 2.19-.13.09-2.38 1.37-2.38 4.19 0 3.26 2.85 4.42 2.96 4.45z"/></svg><span><small>Download on the</small><strong>App Store</strong></span></a>
             <a class="link-arrow" href="#features">See what it does <span aria-hidden="true">↓</span></a>
           </div>
           <p class="free-note">Free to download</p>
@@ -593,7 +609,7 @@
 <div class="plan reveal plan-featured" style="--i:2"><span class="plan-badge">Most complete</span><h3>Business</h3><p class="plan-tag">For shops and freelancers</p><p class="plan-lead">Everything in Pro, plus:</p><ul class="ticks"><li>The full store: products, invoices, barcode</li><li>Branded PDF reports with your logo</li><li>Custom totals and balance rows</li><li>Account folders</li><li>Business Mode charts and chart export</li><li>Commission % on transactions</li><li>Ghollak Buddy</li><li>Unlimited exports and history</li></ul></div>
         </div>
         <div class="plans-cta reveal">
-          <a class="store-badge" href="https://apps.apple.com/us/app/ghollak-persian-english/id544694377" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 1.43c0 1.14-.49 2.27-1.18 3.08-.74.9-1.99 1.57-2.99 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.57-2.27 1.21-2.98.8-.94 2.14-1.64 3.25-1.68.03.13.05.28.05.43zm4.56 15.71c-.03.07-.46 1.58-1.52 3.12-.94 1.34-1.94 2.71-3.43 2.71-1.52 0-1.9-.88-3.63-.88-1.7 0-2.3.91-3.67.91-1.38 0-2.33-1.26-3.43-2.8-1.29-1.82-2.32-4.63-2.32-7.28 0-4.28 2.8-6.55 5.55-6.55 1.45 0 2.68.95 3.6.95.87 0 2.22-1.01 3.9-1.01.61 0 2.89.06 4.37 2.19-.13.09-2.38 1.37-2.38 4.19 0 3.26 2.85 4.42 2.96 4.45z"/></svg><span><small>Download on the</small><strong>App Store</strong></span></a>
+          <a class="store-badge" href="https://apps.apple.com/us/app/ghollak-persian-english/id544694377" target="_blank" rel="noopener" data-placement="plans"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 1.43c0 1.14-.49 2.27-1.18 3.08-.74.9-1.99 1.57-2.99 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.57-2.27 1.21-2.98.8-.94 2.14-1.64 3.25-1.68.03.13.05.28.05.43zm4.56 15.71c-.03.07-.46 1.58-1.52 3.12-.94 1.34-1.94 2.71-3.43 2.71-1.52 0-1.9-.88-3.63-.88-1.7 0-2.3.91-3.67.91-1.38 0-2.33-1.26-3.43-2.8-1.29-1.82-2.32-4.63-2.32-7.28 0-4.28 2.8-6.55 5.55-6.55 1.45 0 2.68.95 3.6.95.87 0 2.22-1.01 3.9-1.01.61 0 2.89.06 4.37 2.19-.13.09-2.38 1.37-2.38 4.19 0 3.26 2.85 4.42 2.96 4.45z"/></svg><span><small>Download on the</small><strong>App Store</strong></span></a>
           <p class="plans-note">One-time purchase · No subscription · Upgrade from inside the app</p>
         </div>
       </div>
@@ -733,6 +749,12 @@
           document.documentElement.classList.remove('needs-lang');
         });
       }
+
+      // Analytics: count App Store button clicks, and which button it was.
+      document.addEventListener('click', function (e) {
+        var link = e.target.closest('a[data-placement]');
+        if (link) gtag('event', 'app_store_click', { placement: link.dataset.placement, page_language: lang });
+      });
 
       // Years on the App Store (launched 2012) and the © year stay current.
       var now = new Date();
