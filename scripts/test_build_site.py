@@ -131,6 +131,26 @@ class BlockTests(unittest.TestCase):
         with self.assertRaises(bs.BuildError):
             bs.block_chapters(s, "en")
 
+    def test_chapter_item_missing_field_raises_naming_lang_and_key(self):
+        s = self.strings(tempfile.mkdtemp(), lang="ar")
+        del s["chapters"]["items"][1]["body"]
+        with self.assertRaises(bs.BuildError) as cm:
+            bs.block_chapters(s, "ar")
+        self.assertIn("[ar]", str(cm.exception))
+        self.assertIn("chapters.items.1.body", str(cm.exception))
+
+    def test_tile_missing_field_raises_build_error(self):
+        s = {"little": {"tiles": [{"icon": "lock", "body": "b"}]}}
+        with self.assertRaises(bs.BuildError) as cm:
+            bs.block_tiles(s, "fa")
+        self.assertIn("little.tiles.0.title", str(cm.exception))
+
+    def test_plan_non_string_item_raises_build_error(self):
+        s = {"plans": {"cards": [{"name": "n", "tag": "t", "lead": "l", "items": [3]}]}}
+        with self.assertRaises(bs.BuildError) as cm:
+            bs.block_plans(s, "en")
+        self.assertIn("plans.cards.0.items.0", str(cm.exception))
+
     def test_chapter_numbers_use_persian_digits_in_fa(self):
         html = bs.block_chapters(self.strings(tempfile.mkdtemp(), lang="fa"), "fa")
         self.assertIn("۰۱", html)

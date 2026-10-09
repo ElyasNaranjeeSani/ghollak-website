@@ -61,6 +61,14 @@ def text(strings, key, lang):
     return value
 
 
+def text_list(strings, key, lang):
+    """Every entry of a list of strings, each checked like a {{t:}} key."""
+    items = lookup(strings, key, lang)
+    if not isinstance(items, list):
+        raise BuildError(f"[{lang}] {key} is not a list")
+    return [text(strings, f"{key}.{i}", lang) for i in range(len(items))]
+
+
 def esc(value):
     return html.escape(value, quote=True)
 
@@ -201,8 +209,8 @@ def block_hero_phones(strings, lang):
 def block_stage(strings, lang):
     """The sticky phone beside the chapters: every chapter screen, stacked."""
     seen = []
-    for item in lookup(strings, "chapters.items", lang):
-        for name in screen_list(strings, lang, "chapters", item["id"]):
+    for i in range(len(lookup(strings, "chapters.items", lang))):
+        for name in screen_list(strings, lang, "chapters", text(strings, f"chapters.items.{i}.id", lang)):
             if name not in seen:
                 seen.append(name)
     imgs = "".join(shot_img(strings, lang, name) for name in seen)
@@ -211,20 +219,22 @@ def block_stage(strings, lang):
 
 def block_chapters(strings, lang):
     out = []
-    for i, item in enumerate(lookup(strings, "chapters.items", lang)):
-        cid = item["id"]
+    for i in range(len(lookup(strings, "chapters.items", lang))):
+        key = f"chapters.items.{i}"
+        field = lambda name: esc(text(strings, f"{key}.{name}", lang))
+        cid = text(strings, f"{key}.id", lang)
         names = screen_list(strings, lang, "chapters", cid)
         number = localize_digits(f"{i + 1:02d}", lang)
-        ticks = "".join(f"<li>{esc(t)}</li>" for t in item["ticks"])
+        ticks = "".join(f"<li>{esc(t)}</li>" for t in text_list(strings, f"{key}.ticks", lang))
         marks = "".join(f'<i class="mark" data-shot="{n}"></i>' for n in names)
         phones = "".join(phone(shot_img(strings, lang, n)) for n in names)
         out.append(
             f'<article class="chapter" id="{cid}" style="--shots:{len(names)}">'
             f'<div class="marks" aria-hidden="true">{marks}</div>'
             f'<div class="chapter-copy">'
-            f'<p class="chapter-kicker"><span class="chapter-num">{number}</span>{esc(item["kicker"])}</p>'
-            f'<h3>{esc(item["title"])}</h3>'
-            f'<p class="chapter-body">{esc(item["body"])}</p>'
+            f'<p class="chapter-kicker"><span class="chapter-num">{number}</span>{field("kicker")}</p>'
+            f'<h3>{field("title")}</h3>'
+            f'<p class="chapter-body">{field("body")}</p>'
             f'<ul class="ticks">{ticks}</ul>'
             f'</div>'
             f'<div class="chapter-shots">{phones}</div>'
@@ -234,25 +244,29 @@ def block_chapters(strings, lang):
 
 def block_tiles(strings, lang):
     out = []
-    for tile in lookup(strings, "little.tiles", lang):
-        if tile["icon"] not in ICONS:
-            raise BuildError(f"[{lang}] unknown tile icon: {tile['icon']}")
+    for i in range(len(lookup(strings, "little.tiles", lang))):
+        field = lambda name: text(strings, f"little.tiles.{i}.{name}", lang)
+        icon = field("icon")
+        if icon not in ICONS:
+            raise BuildError(f"[{lang}] unknown tile icon: {icon}")
         out.append(
-            f'<div class="tile reveal"><svg viewBox="0 0 24 24" aria-hidden="true">{ICONS[tile["icon"]]}</svg>'
-            f'<h3>{esc(tile["title"])}</h3><p>{esc(tile["body"])}</p></div>')
+            f'<div class="tile reveal"><svg viewBox="0 0 24 24" aria-hidden="true">{ICONS[icon]}</svg>'
+            f'<h3>{esc(field("title"))}</h3><p>{esc(field("body"))}</p></div>')
     return "\n".join(out)
 
 
 def block_plans(strings, lang):
     out = []
     for i, card in enumerate(lookup(strings, "plans.cards", lang)):
-        featured = "badge" in card
-        badge = f'<span class="plan-badge">{esc(card["badge"])}</span>' if featured else ""
-        items = "".join(f"<li>{esc(t)}</li>" for t in card["items"])
+        key = f"plans.cards.{i}"
+        field = lambda name: esc(text(strings, f"{key}.{name}", lang))
+        featured = isinstance(card, dict) and "badge" in card
+        badge = f'<span class="plan-badge">{field("badge")}</span>' if featured else ""
+        items = "".join(f"<li>{esc(t)}</li>" for t in text_list(strings, f"{key}.items", lang))
         out.append(
             f'<div class="plan reveal{" plan-featured" if featured else ""}" style="--i:{i}">{badge}'
-            f'<h3>{esc(card["name"])}</h3><p class="plan-tag">{esc(card["tag"])}</p>'
-            f'<p class="plan-lead">{esc(card["lead"])}</p><ul class="ticks">{items}</ul></div>')
+            f'<h3>{field("name")}</h3><p class="plan-tag">{field("tag")}</p>'
+            f'<p class="plan-lead">{field("lead")}</p><ul class="ticks">{items}</ul></div>')
     return "\n".join(out)
 
 
