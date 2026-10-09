@@ -58,9 +58,9 @@ Requires: Pillow (`pip install pillow`)
 from PIL import Image
 import os
 
-SRC_DIR = "/Users/elyas/Desktop/Ghollak new screenshots/iPhone final"
-ICON_MINI = "/Users/elyas/Desktop/GhollakMini.png"
-ICON_PRO = "/Users/elyas/Desktop/icon-white.jpg"
+SRC_DIR = "~/Desktop/Ghollak new screenshots/iPhone final"
+ICON_MINI = "~/Desktop/GhollakMini.png"
+ICON_PRO = "~/Desktop/icon-white.jpg"
 
 OUT_GALLERY = "assets/screenshots/gallery"
 OUT_CROPPED = "assets/screenshots/cropped"
