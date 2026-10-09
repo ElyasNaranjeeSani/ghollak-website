@@ -1,0 +1,236 @@
+{
+  "meta": {
+    "title": "Ghollak — Personal & business finance for iPhone, iPad and Mac",
+    "description": "Simple as a piggy bank, complete as a ledger. Accounts, people, store and invoices, checks, reports and PDF/Excel export — in English, Persian and Arabic.",
+    "og_image": "/assets/og/og-en.jpg",
+    "fonts_href": "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap",
+    "font_display": "'Instrument Serif', Georgia, serif",
+    "font_sans": "'Manrope', system-ui, sans-serif",
+    "brand": "Ghollak"
+  },
+  "nav": {
+    "features": "Features",
+    "plans": "Plans",
+    "contact": "Contact",
+    "download": "Download",
+    "language": "Language"
+  },
+  "store_badge": {
+    "kicker": "Download on the",
+    "store": "App Store"
+  },
+  "hero": {
+    "eyebrow": "Made for iPhone, iPad & Mac",
+    "title_html": "Simple as a piggy bank.<br><em>Complete as a ledger.</em>",
+    "sub": "Your personal money and your business in one calm app — accounts, the people who owe you, your store, checks and reports you'd be proud to send.",
+    "secondary": "See what it does",
+    "free_note": "Free to download",
+    "rating_value": "4.5",
+    "rating": "on the App Store",
+    "years": "years on the App Store",
+    "privacy": "No sign-up. Your data stays on your device."
+  },
+  "chapters": {
+    "eyebrow": "What's inside",
+    "title_html": "Everything your money touches, <em>in one place.</em>",
+    "sub": "Start with a single account. Grow into a full shop. Ghollak keeps up.",
+    "items": [
+      {
+        "id": "accounts",
+        "kicker": "Accounts & transactions",
+        "title": "See all your money at a glance.",
+        "body": "Accounts in any currency, a daily digest of what's coming up, savings goals that fill as you go, and recurring transactions that record themselves.",
+        "ticks": [
+          "Multiple accounts and currencies",
+          "A savings goal for every account",
+          "Recurring transactions and transfers"
+        ]
+      },
+      {
+        "id": "people",
+        "kicker": "People",
+        "title": "Know exactly who owes whom.",
+        "body": "A ledger for every person: what you gave, what came back and what's still open. Settle up in a tap and share a clean statement.",
+        "ticks": [
+          "Debts and receivables per person",
+          "Settlements recorded in your accounts",
+          "Shareable statements"
+        ]
+      },
+      {
+        "id": "store",
+        "kicker": "Store",
+        "title": "Run your shop from your pocket.",
+        "body": "Products, stock, purchases, sales and returns, with a barcode scanner in the camera. Ghollak works out average cost, profit and what your inventory is worth.",
+        "ticks": [
+          "Barcode scanning",
+          "Sales, purchase and return invoices",
+          "Stock value and gross profit"
+        ]
+      },
+      {
+        "id": "checks",
+        "kicker": "Checks & reminders",
+        "title": "Never miss a due date again.",
+        "body": "Track checks you've received and issued, get a heads-up before they're due, and archive them once they clear. Set reminders for anything else, too.",
+        "ticks": [
+          "Received and issued checks",
+          "Due-date notifications your way",
+          "Reminders for anything"
+        ]
+      },
+      {
+        "id": "reports",
+        "kicker": "Reports & export",
+        "title": "Reports you'd proudly send.",
+        "body": "Charts that show where the money goes, and PDF or Excel exports with your logo, title, colors and the columns you choose.",
+        "ticks": [
+          "Pie, bar, line and trend charts",
+          "PDF and Excel with your branding",
+          "Every past export, one tap away"
+        ]
+      }
+    ]
+  },
+  "little": {
+    "title_html": "The little things that make it <em>yours.</em>",
+    "tiles": [
+      {
+        "icon": "widgets",
+        "title": "Home Screen widgets",
+        "body": "Balances and what's next, without opening the app."
+      },
+      {
+        "icon": "lock",
+        "title": "Face ID & Touch ID",
+        "body": "Lock the app so your numbers stay yours."
+      },
+      {
+        "icon": "palette",
+        "title": "Themes & dark mode",
+        "body": "Gold, sky and more — in light or dark."
+      },
+      {
+        "icon": "cloud",
+        "title": "iCloud sync & backup",
+        "body": "The same data on every device, plus manual backups."
+      },
+      {
+        "icon": "currency",
+        "title": "Multi-currency",
+        "body": "Record in any currency, with rates kept up to date."
+      },
+      {
+        "icon": "tag",
+        "title": "Tags",
+        "body": "Label transactions, then filter and chart by them."
+      },
+      {
+        "icon": "folder",
+        "title": "Account folders",
+        "body": "Group accounts and see each folder's balance."
+      },
+      {
+        "icon": "calculator",
+        "title": "Ghollak Buddy",
+        "body": "A floating calculator, currency and date converter."
+      }
+    ]
+  },
+  "calendars": {
+    "title_html": "Your language. <em>Your calendar.</em>",
+    "sub": "Use Ghollak in English, Persian or Arabic, with the Solar Hijri, Gregorian or Lunar Hijri calendar — and switch whenever you like.",
+    "today": "Today's date, live in each calendar",
+    "shamsi": "Solar Hijri",
+    "gregorian": "Gregorian",
+    "hijri": "Lunar Hijri"
+  },
+  "plans": {
+    "eyebrow": "Plans",
+    "title_html": "Start free. <em>Pay once</em> when you're ready.",
+    "sub": "No subscriptions. Upgrade inside the app whenever you need more.",
+    "note": "One-time purchase · No subscription · Upgrade from inside the app",
+    "cards": [
+      {
+        "name": "Free",
+        "tag": "To get started",
+        "lead": "Everything you need to try it properly:",
+        "items": [
+          "2 accounts and 2 checks",
+          "3 reminders and 3 recurring transactions",
+          "2 people in your ledger",
+          "3 exports a month",
+          "Try the store: 2 products, 2 invoices"
+        ]
+      },
+      {
+        "name": "Pro",
+        "tag": "For your personal money",
+        "lead": "Everything in Free, without limits, plus:",
+        "items": [
+          "Unlimited accounts, checks, people and reminders",
+          "iCloud sync across your devices",
+          "Manual backup and restore",
+          "Multi-currency transactions",
+          "Tags",
+          "10 exports a month"
+        ]
+      },
+      {
+        "name": "Business",
+        "tag": "For shops and freelancers",
+        "badge": "Most complete",
+        "lead": "Everything in Pro, plus:",
+        "items": [
+          "The full store: products, invoices, barcode",
+          "Branded PDF reports with your logo",
+          "Custom totals and balance rows",
+          "Account folders",
+          "Business Mode charts and chart export",
+          "Commission % on transactions",
+          "Ghollak Buddy",
+          "Unlimited exports and history"
+        ]
+      }
+    ]
+  },
+  "contact": {
+    "title_html": "Questions? Ideas? <em>Say hello.</em>",
+    "sub": "We read every message — feature requests included.",
+    "name": "Name",
+    "name_ph": "Your name",
+    "email": "Email",
+    "email_ph": "you@example.com",
+    "message": "Message",
+    "message_ph": "What's on your mind?",
+    "send": "Send message",
+    "sending": "Sending…",
+    "ok": "✓ Thanks! We'll be in touch.",
+    "error": "✗ Something went wrong. Please try again.",
+    "network": "✗ Network error. Please try again."
+  },
+  "footer": {
+    "tagline": "Simple as a piggy bank, complete as a ledger.",
+    "privacy": "Privacy Policy",
+    "other_apps": "Other apps:",
+    "tavallod": "Tavallod privacy",
+    "yadavar": "Yadavar privacy",
+    "rights": "All rights reserved."
+  },
+  "picker": {
+    "title": "Choose your language",
+    "note": "You can change it any time from the top of the page."
+  },
+  "screens": {
+    "01-home": "Home screen with total balance, upcoming transactions and account cards",
+    "02-account": "An account with its savings goal progress and transactions",
+    "03-store": "Store dashboard with stock value, monthly sales and profit",
+    "04-invoice": "A sales invoice with its line items and totals",
+    "05-people": "People ledger with what others owe you and what you owe",
+    "06-checks": "Checks list with amounts and due dates",
+    "07-reminders": "Reminders for upcoming payments and tasks",
+    "08-charts": "Charts screen with an expense breakdown pie chart",
+    "09-pdf-settings": "PDF export settings: logo, title, colors and columns",
+    "10-pdf-export": "A branded PDF report ready to share"
+  }
+}

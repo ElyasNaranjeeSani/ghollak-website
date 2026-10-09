@@ -81,5 +81,77 @@ class PageTests(unittest.TestCase):
         self.assertFalse(os.path.exists(os.path.join(root, "index.html")))
 
 
+class BlockTests(unittest.TestCase):
+    def strings(self, root, lang="en", chapters=None):
+        os.makedirs(os.path.join(root, "assets", "screens", lang), exist_ok=True)
+        for name in ("a", "b", "c"):
+            open(os.path.join(root, "assets", "screens", lang, name + ".webp"), "w").close()
+        return {
+            "_lang": lang, "_root": root,
+            "_screens": {"hero": {lang: ["a", "b", "c"]},
+                         "chapters": {"one": {lang: chapters or ["a", "b"]}, "two": {lang: ["c"]}}},
+            "screens": {"a": "Alt A", "b": "Alt B", "c": "Alt C"},
+            "chapters": {"items": [
+                {"id": "one", "kicker": "K1", "title": "T1", "body": "B1", "ticks": ["x"]},
+                {"id": "two", "kicker": "K2", "title": "T2", "body": "B2", "ticks": ["y"]},
+            ]},
+        }
+
+    def test_chapters_render_one_mark_and_one_phone_per_listed_screen(self):
+        html = bs.block_chapters(self.strings(tempfile.mkdtemp()), "en")
+        self.assertEqual(html.count('class="mark"'), 3)
+        self.assertEqual(html.count('class="phone"'), 3)
+        self.assertNotIn('src=""', html)
+
+    def test_stage_lists_each_screen_once(self):
+        html = bs.block_stage(self.strings(tempfile.mkdtemp(), chapters=["a", "c"]), "en")
+        self.assertEqual(html.count("<img"), 2)
+
+    def test_missing_screen_file_raises(self):
+        s = self.strings(tempfile.mkdtemp(), chapters=["a", "zz"])
+        s["screens"]["zz"] = "Alt"
+        with self.assertRaises(bs.BuildError) as cm:
+            bs.block_chapters(s, "en")
+        self.assertIn("zz", str(cm.exception))
+
+    def test_missing_alt_text_raises(self):
+        s = self.strings(tempfile.mkdtemp())
+        del s["screens"]["b"]
+        with self.assertRaises(bs.BuildError):
+            bs.block_chapters(s, "en")
+
+    def test_chapter_without_screens_for_language_raises(self):
+        s = self.strings(tempfile.mkdtemp())
+        s["_screens"]["chapters"]["two"] = {}
+        with self.assertRaises(bs.BuildError):
+            bs.block_chapters(s, "en")
+
+    def test_chapter_numbers_use_persian_digits_in_fa(self):
+        html = bs.block_chapters(self.strings(tempfile.mkdtemp(), lang="fa"), "fa")
+        self.assertIn("۰۱", html)
+
+    def test_localize_digits(self):
+        self.assertEqual(bs.localize_digits("14+", "fa"), "۱۴+")
+        self.assertEqual(bs.localize_digits("14+", "ar"), "١٤+")
+        self.assertEqual(bs.localize_digits("14+", "en"), "14+")
+
+    def test_lang_switch_marks_current_and_links_all(self):
+        html = bs.block_lang_switch({}, "ar")
+        self.assertIn('href="/en/"', html)
+        self.assertIn('href="/"', html)
+        self.assertIn('aria-current="true" data-lang="ar"', html)
+
+    def test_store_badge_links_to_app_store_with_localized_text(self):
+        s = {"store_badge": {"kicker": "دانلود از", "store": "اپ‌استور"}}
+        html = bs.block_store_badge(s, "fa")
+        self.assertIn('href="https://apps.apple.com/us/app/ghollak-persian-english/id544694377"', html)
+        self.assertIn("اپ‌استور", html)
+
+    def test_overlay_only_on_persian_root(self):
+        s = {"picker": {"title": "t", "note": "n"}}
+        self.assertIn("lang-picker", bs.block_lang_overlay(s, "fa"))
+        self.assertEqual(bs.block_lang_overlay(s, "en"), "")
+
+
 if __name__ == "__main__":
     unittest.main()
