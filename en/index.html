@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<!--
+  GENERATED FILE SOURCE — edit site/template.html + site/strings/*.json, then
+  run `python3 scripts/build_site.py`. index.html, en/index.html and
+  ar/index.html are build output.
+-->
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ghollak — Personal &amp; business finance for iPhone, iPad and Mac</title>
+  <meta name="description" content="Simple as a piggy bank, complete as a ledger. Accounts, people, store and invoices, checks, reports and PDF/Excel export — in English, Persian and Arabic." />
+  <meta name="theme-color" content="#f7f1e6" />
+  <link rel="canonical" href="https://ghollak.app/en/" />
+  <link rel="alternate" hreflang="fa" href="https://ghollak.app/" />
+  <link rel="alternate" hreflang="en" href="https://ghollak.app/en/" />
+  <link rel="alternate" hreflang="ar" href="https://ghollak.app/ar/" />
+  <link rel="alternate" hreflang="x-default" href="https://ghollak.app/" />
+  <meta property="og:title" content="Ghollak — Personal &amp; business finance for iPhone, iPad and Mac" />
+  <meta property="og:description" content="Simple as a piggy bank, complete as a ledger. Accounts, people, store and invoices, checks, reports and PDF/Excel export — in English, Persian and Arabic." />
+  <meta property="og:url" content="https://ghollak.app/en/" />
+  <meta property="og:image" content="https://ghollak.app/assets/og/og-en.jpg" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="/assets/icons/ghollak-icon.png" />
+  <link rel="apple-touch-icon" href="/assets/icons/ghollak-icon.png" />
+  <script>
+    // Language memory. Only the Persian root acts on it: a visitor who picked
+    // English or Arabic before is sent straight there, and a first-time
+    // visitor gets the picker. If storage is unavailable (some private
+    // modes), nobody is redirected and no picker shows — Persian plus the nav
+    // switcher still works.
+    (function () {
+      var root = document.documentElement, stored;
+      root.classList.add('js');
+      try { stored = localStorage.getItem('ghollak-lang'); } catch (e) { return; }
+      if (root.lang !== 'fa') return;
+      if (stored === 'en' || stored === 'ar') { location.replace('/' + stored + '/' + location.hash); return; }
+      if (!stored) root.classList.add('needs-lang');
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --paper: #f7f1e6;
+      --paper-deep: #efe4cf;
+      --card: #fffcf5;
+      --ink: #2a2118;
+      --ink-soft: #6e6050;
+      --line: #e4d7bd;
+      --gold: #a87c1c;
+      --gold-bright: #c99a2e;
+      --gold-deep: #7d5b10;
+      --gold-wash: #f1e3bf;
+      --night: #241c13;
+      --night-2: #33281b;
+      --display: 'Instrument Serif', Georgia, serif;
+      --sans: 'Manrope', system-ui, sans-serif;
+      --wrap: 1160px;
+      --radius: 22px;
+      --ease: cubic-bezier(.2, .7, .2, 1);
+    }
+
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: var(--sans);
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+    em { font-style: italic; color: var(--gold); }
+    :lang(fa) em, :lang(ar) em { font-style: normal; }
+    :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 6px; }
+
+    .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 24px; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--gold-deep);
+    }
+    :lang(fa) .eyebrow, :lang(ar) .eyebrow { letter-spacing: 0; font-size: .9rem; text-transform: none; }
+    .hero .eyebrow { text-transform: none; letter-spacing: .02em; font-size: .92rem; }
+    h1, h2 { font-family: var(--display); font-weight: 400; letter-spacing: -.01em; line-height: 1.05; }
+    :lang(fa) h1, :lang(fa) h2, :lang(ar) h1, :lang(ar) h2 { letter-spacing: 0; line-height: 1.35; font-weight: 700; }
+    h2 { font-size: clamp(2.2rem, 4.6vw, 3.6rem); }
+    .lead { font-size: 1.12rem; color: var(--ink-soft); max-width: 36rem; }
+    .section-head { text-align: center; display: grid; justify-items: center; gap: 1rem; margin-bottom: 4rem; }
+
+    /* ── buttons ── */
+    .store-badge {
+      display: inline-flex; align-items: center; gap: .7rem;
+      background: var(--night); color: #fff; text-decoration: none;
+      border-radius: 14px; padding: .65rem 1.25rem .65rem 1rem;
+      box-shadow: 0 10px 30px -12px rgba(36, 28, 19, .6);
+      transition: transform .25s var(--ease), box-shadow .25s var(--ease);
+    }
+    .store-badge:hover { transform: translateY(-2px); box-shadow: 0 16px 34px -14px rgba(36, 28, 19, .75); }
+    .store-badge svg { width: 26px; height: 26px; fill: currentColor; flex: none; }
+    .store-badge span { display: grid; line-height: 1.15; text-align: start; }
+    .store-badge small { font-size: .7rem; opacity: .8; }
+    .store-badge strong { font-size: 1.2rem; font-weight: 600; letter-spacing: -.01em; }
+    .store-badge-single strong { font-size: 1.1rem; padding-block: .3rem; }
+    .btn-gold {
+      display: inline-flex; align-items: center; justify-content: center;
+      background: linear-gradient(180deg, var(--gold-bright), var(--gold));
+      color: #fff; text-decoration: none; font-weight: 700; font-size: .9rem;
+      border-radius: 999px; padding: .55rem 1.1rem; border: 0; cursor: pointer;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.3), 0 6px 16px -8px rgba(125, 91, 16, .8);
+      transition: transform .2s var(--ease), filter .2s;
+    }
+    .btn-gold:hover { transform: translateY(-1px); filter: brightness(1.05); }
+    .link-arrow { font-weight: 600; color: var(--ink); text-decoration: none; display: inline-flex; gap: .4rem; align-items: center; }
+    .link-arrow:hover { color: var(--gold-deep); }
+    .link-arrow span { transition: transform .2s var(--ease); }
+    .link-arrow:hover span { transform: translateY(2px); }
+
+    /* ── nav ── */
+    .nav {
+      position: fixed; inset: 0 0 auto; z-index: 50;
+      transition: background .3s, box-shadow .3s, backdrop-filter .3s;
+    }
+    .nav.scrolled {
+      background: rgba(247, 241, 230, .82);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 1px 0 var(--line);
+    }
+    .nav-inner { display: flex; align-items: center; gap: 1.5rem; height: 68px; }
+    .brand { display: flex; align-items: center; gap: .6rem; text-decoration: none; font-weight: 800; font-size: 1.15rem; }
+    .brand img { width: 34px; height: 34px; border-radius: 9px; box-shadow: 0 2px 8px rgba(36,28,19,.18); }
+    .nav-links { display: flex; gap: 1.75rem; margin-inline-start: auto; }
+    .nav-links a { text-decoration: none; font-size: .92rem; font-weight: 500; color: var(--ink-soft); transition: color .2s; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-end { display: flex; align-items: center; gap: .75rem; }
+    .lang-menu { position: relative; }
+    .lang-menu summary {
+      list-style: none; cursor: pointer; display: flex; align-items: center; gap: .35rem;
+      font-size: .88rem; font-weight: 600; color: var(--ink-soft);
+      padding: .45rem .7rem; border-radius: 999px; border: 1px solid var(--line); background: rgba(255,252,245,.6);
+    }
+    .lang-menu summary::-webkit-details-marker { display: none; }
+    .lang-menu summary svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.6; }
+    .lang-menu[open] summary { color: var(--ink); }
+    .lang-list {
+      position: absolute; inset-inline-end: 0; top: calc(100% + 8px);
+      background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+      box-shadow: 0 18px 40px -18px rgba(36,28,19,.45); padding: .35rem; display: grid; min-width: 150px;
+    }
+    .lang-list a { text-decoration: none; padding: .55rem .8rem; border-radius: 10px; font-weight: 500; }
+    .lang-list a:hover { background: var(--gold-wash); }
+    .lang-list a[aria-current] { color: var(--gold-deep); font-weight: 700; }
+    .lang-list a[lang="fa"], .lang-list a[lang="ar"] { font-family: 'Vazirmatn', var(--sans); }
+
+    /* ── phone ── */
+    .phone {
+      aspect-ratio: 1 / 2.133;
+      padding: 1.75%;
+      border-radius: 15% / 7.2%;
+      background: linear-gradient(145deg, #3a3129, #14100c 55%, #2b241d);
+      box-shadow:
+        inset 0 0 0 1.5px rgba(255,255,255,.12),
+        0 40px 70px -30px rgba(36, 28, 19, .55),
+        0 18px 30px -18px rgba(36, 28, 19, .4);
+      position: relative;
+    }
+    .phone-screen {
+      position: relative; width: 100%; height: 100%;
+      border-radius: 13.6% / 6.4%; overflow: hidden; background: var(--paper-deep);
+    }
+    .phone-screen::after { /* dynamic island */
+      content: ""; position: absolute; left: 50%; transform: translateX(-50%);
+      width: 30%; height: 3.4%; top: 1.4%; background: #0c0a08; border-radius: 999px;
+    }
+    .phone-screen img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+    /* ── hero ── */
+    .hero { position: relative; padding: 128px 0 72px; overflow: hidden; }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: -1; pointer-events: none;
+      background:
+        radial-gradient(60% 55% at 72% 38%, rgba(201, 154, 46, .28), transparent 70%),
+        radial-gradient(40% 40% at 15% 85%, rgba(201, 154, 46, .14), transparent 70%);
+    }
+    .hero-bg::before {
+      content: ""; position: absolute; inset: 0; opacity: .5;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='88' viewBox='0 0 88 88'%3E%3Cg fill='none' stroke='%23a87c1c' stroke-opacity='.22' stroke-width='.8'%3E%3Crect x='24' y='24' width='40' height='40'/%3E%3Cpath d='M44 15.7 72.3 44 44 72.3 15.7 44Z'/%3E%3Cpath d='M0 0l24 24M88 0 64 24M0 88l24-24M88 88 64 64'/%3E%3C/g%3E%3C/svg%3E");
+      -webkit-mask-image: radial-gradient(70% 70% at 70% 40%, #000 10%, transparent 75%);
+              mask-image: radial-gradient(70% 70% at 70% 40%, #000 10%, transparent 75%);
+    }
+    [dir="rtl"] .hero-bg { transform: scaleX(-1); }
+    .hero-inner { display: grid; grid-template-columns: 1.02fr .98fr; gap: 3rem; align-items: center; }
+    .hero-copy { display: grid; gap: 1.5rem; justify-items: start; }
+    .hero h1 { font-size: clamp(2.7rem, 5.6vw, 4.7rem); }
+    :lang(fa) .hero h1, :lang(ar) .hero h1 { font-size: clamp(2.5rem, 5.4vw, 4.4rem); }
+    .hero h1 em { display: inline-block; }
+    .hero-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem 1.75rem; margin-top: .25rem; }
+    .free-note { font-size: .85rem; color: var(--ink-soft); margin-top: -.75rem; }
+    .trust {
+      list-style: none; display: flex; flex-wrap: wrap; gap: .6rem;
+      margin-top: .75rem; font-size: .86rem; color: var(--ink-soft);
+    }
+    .trust li {
+      display: inline-flex; align-items: center; gap: .4rem;
+      background: rgba(255, 252, 245, .7); border: 1px solid var(--line);
+      padding: .4rem .8rem; border-radius: 999px;
+    }
+    .trust b { color: var(--ink); }
+    .trust .star { color: var(--gold-bright); font-size: 1rem; line-height: 1; }
+    .trust svg { width: 15px; height: 15px; fill: none; stroke: var(--gold); stroke-width: 2; }
+
+    .hero-phones { position: relative; height: 600px; display: flex; justify-content: center; align-items: center; }
+    .hero-phones .phone { position: absolute; }
+    .phone-center { width: 268px; z-index: 2; animation: float 7s ease-in-out infinite; }
+    .phone-side { width: 222px; z-index: 1; filter: saturate(.92); }
+    .phone-left { transform: translateX(-62%) rotate(-9deg) translateY(28px); }
+    .phone-right { transform: translateX(62%) rotate(9deg) translateY(28px); }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+    /* ── chapters ── */
+    .features { padding: 110px 0 60px; }
+    .chapters-grid { display: grid; grid-template-columns: minmax(260px, 380px) 1fr; gap: clamp(3rem, 7vw, 7rem); }
+    .stage {
+      --phone-h: min(640px, calc(100vh - 150px));
+      position: sticky; top: calc((100vh - var(--phone-h)) / 2 + 24px);
+      height: var(--phone-h); display: flex; justify-content: center;
+    }
+    .stage::before {
+      content: ""; position: absolute; inset: 8% -18% 0; z-index: -1;
+      background: radial-gradient(closest-side, rgba(201, 154, 46, .28), transparent);
+    }
+    .stage-phone { height: 100%; width: auto; }
+    .stage-phone img { opacity: 0; transform: scale(1.02); transition: opacity .55s var(--ease), transform .7s var(--ease); }
+    .stage-phone img.is-on { opacity: 1; transform: none; }
+    .chapter { position: relative; min-height: calc(var(--shots) * 52vh + 28vh); }
+    .marks { position: absolute; inset: 0; display: flex; flex-direction: column; pointer-events: none; }
+    .mark { flex: 1; }
+    .chapter-copy {
+      position: sticky; top: 30vh; padding: 1.5rem 0 3rem; max-width: 30rem;
+      opacity: .32; transition: opacity .5s var(--ease);
+    }
+    .chapter.is-active .chapter-copy { opacity: 1; }
+    .chapter-kicker {
+      display: flex; align-items: center; gap: .75rem;
+      font-size: .82rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-deep);
+    }
+    :lang(fa) .chapter-kicker, :lang(ar) .chapter-kicker { letter-spacing: 0; font-size: .95rem; text-transform: none; }
+    .chapter-num {
+      font-family: var(--display); font-size: 1.05rem; letter-spacing: 0;
+      width: 2.4rem; height: 2.4rem; display: grid; place-items: center;
+      border: 1px solid var(--gold); border-radius: 50%; color: var(--gold);
+    }
+    .chapter h3 {
+      font-family: var(--display); font-weight: 400; font-size: clamp(2rem, 3.4vw, 2.85rem);
+      line-height: 1.1; margin: 1rem 0 .9rem;
+    }
+    :lang(fa) .chapter h3, :lang(ar) .chapter h3 { font-weight: 700; line-height: 1.4; }
+    .chapter-body { color: var(--ink-soft); font-size: 1.05rem; margin-bottom: 1.25rem; }
+    .ticks { list-style: none; display: grid; gap: .55rem; }
+    .ticks li { position: relative; padding-inline-start: 1.8rem; font-weight: 500; }
+    .ticks li::before {
+      content: ""; position: absolute; inset-inline-start: 0; top: .2em;
+      width: 1.15rem; height: 1.15rem; border-radius: 50%; background: var(--gold-wash);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.5l3 3 6-7' fill='none' stroke='%237d5b10' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-size: 100%;
+    }
+    .chapter-shots { display: none; }
+
+    /* ── little things ── */
+    .little { padding: 90px 0 110px; }
+    .tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .tile {
+      background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 1.5rem; transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s;
+    }
+    .tile:hover { transform: translateY(-3px); border-color: var(--gold-wash); box-shadow: 0 22px 40px -28px rgba(36, 28, 19, .45); }
+    .tile svg {
+      width: 44px; height: 44px; padding: 10px; border-radius: 14px;
+      background: var(--gold-wash); fill: none; stroke: var(--gold-deep); stroke-width: 1.7;
+      stroke-linecap: round; stroke-linejoin: round; margin-bottom: 1rem;
+    }
+    .tile h3 { font-size: 1.02rem; font-weight: 700; margin-bottom: .3rem; }
+    .tile p { font-size: .92rem; color: var(--ink-soft); line-height: 1.5; }
+
+    /* ── calendars ── */
+    .calendars {
+      position: relative; overflow: hidden; color: #f4ead6;
+      background: radial-gradient(80% 120% at 50% 0%, var(--night-2), var(--night) 70%);
+      padding: 100px 0;
+    }
+    .calendars::before {
+      content: ""; position: absolute; inset: 0; opacity: .5; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='88' viewBox='0 0 88 88'%3E%3Cg fill='none' stroke='%23c99a2e' stroke-opacity='.16' stroke-width='.8'%3E%3Crect x='24' y='24' width='40' height='40'/%3E%3Cpath d='M44 15.7 72.3 44 44 72.3 15.7 44Z'/%3E%3Cpath d='M0 0l24 24M88 0 64 24M0 88l24-24M88 88 64 64'/%3E%3C/g%3E%3C/svg%3E");
+      -webkit-mask-image: radial-gradient(60% 80% at 50% 50%, #000, transparent 80%);
+              mask-image: radial-gradient(60% 80% at 50% 50%, #000, transparent 80%);
+    }
+    .calendars .section-head { margin-bottom: 3rem; position: relative; }
+    .calendars .lead { color: rgba(244, 234, 214, .72); }
+    .calendars em { color: var(--gold-bright); }
+    .languages { display: flex; justify-content: center; flex-wrap: wrap; gap: .6rem; margin-top: .5rem; }
+    .languages span {
+      border: 1px solid rgba(201, 154, 46, .45); border-radius: 999px;
+      padding: .35rem 1rem; font-weight: 600; color: #f4ead6;
+    }
+    .dates { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; max-width: 900px; margin: 0 auto; }
+    .date {
+      border: 1px solid rgba(201, 154, 46, .3); border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.015));
+      padding: 1.6rem 1.4rem; text-align: center;
+    }
+    .date small { display: block; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-bright); font-weight: 700; }
+    :lang(fa) .date small, :lang(ar) .date small { letter-spacing: 0; font-size: .9rem; text-transform: none; }
+    .date strong { display: block; font-family: var(--display); font-weight: 400; font-size: clamp(1.45rem, 2.6vw, 1.9rem); margin-top: .5rem; line-height: 1.3; }
+    :lang(fa) .date strong, :lang(ar) .date strong { font-weight: 700; }
+    .date-today { text-align: center; margin-top: 1.25rem; font-size: .85rem; color: rgba(244, 234, 214, .55); position: relative; }
+
+    /* ── plans ── */
+    .plans { padding: 110px 0 100px; }
+    .plan-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; align-items: start; }
+    .plan {
+      position: relative; background: var(--card); border: 1px solid var(--line);
+      border-radius: 26px; padding: 2rem 1.75rem;
+    }
+    .plan h3 { font-family: var(--display); font-weight: 400; font-size: 2.3rem; line-height: 1.1; }
+    :lang(fa) .plan h3, :lang(ar) .plan h3 { font-weight: 700; font-size: 1.9rem; }
+    .plan-tag { color: var(--gold-deep); font-weight: 600; font-size: .92rem; margin: .2rem 0 1.25rem; }
+    .plan-lead { font-size: .9rem; color: var(--ink-soft); margin-bottom: .9rem; padding-top: 1.1rem; border-top: 1px dashed var(--line); }
+    .plan .ticks li { font-size: .95rem; }
+    .plan-featured {
+      background: radial-gradient(120% 80% at 50% 0%, var(--night-2), var(--night));
+      color: #f4ead6; border-color: rgba(201, 154, 46, .5);
+      box-shadow: 0 40px 70px -40px rgba(36, 28, 19, .8);
+    }
+    .plan-featured .plan-tag { color: var(--gold-bright); }
+    .plan-featured .plan-lead { color: rgba(244, 234, 214, .7); border-color: rgba(201, 154, 46, .3); }
+    .plan-featured .ticks li::before { background-color: rgba(201, 154, 46, .25); }
+    .plan-badge {
+      position: absolute; top: 1.4rem; inset-inline-end: 1.4rem;
+      background: linear-gradient(180deg, var(--gold-bright), var(--gold)); color: #fff;
+      font-size: .72rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+      padding: .3rem .7rem; border-radius: 999px;
+    }
+    :lang(fa) .plan-badge, :lang(ar) .plan-badge { letter-spacing: 0; font-size: .8rem; text-transform: none; }
+    .plans-cta { display: grid; justify-items: center; gap: 1rem; margin-top: 3rem; text-align: center; }
+    .plans-note { font-size: .9rem; color: var(--ink-soft); }
+
+    /* ── contact ── */
+    .contact { padding: 40px 0 110px; }
+    .contact-inner {
+      display: grid; grid-template-columns: .9fr 1.1fr; gap: 3rem; align-items: start;
+      background: var(--card); border: 1px solid var(--line); border-radius: 30px;
+      padding: clamp(1.75rem, 5vw, 3.5rem);
+    }
+    .contact-copy { display: grid; gap: 1rem; align-content: start; }
+    .contact h2 { font-size: clamp(2rem, 4vw, 3rem); }
+    .contact-form { display: grid; gap: 1rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-field { display: grid; gap: .4rem; }
+    .form-field label { font-size: .85rem; font-weight: 600; }
+    .form-field label span { color: var(--gold); }
+    .form-field input, .form-field textarea {
+      font: inherit; font-size: 1rem; color: var(--ink);
+      background: var(--paper); border: 1px solid var(--line); border-radius: 14px;
+      padding: .8rem 1rem; outline: none; transition: border-color .2s, box-shadow .2s, background .2s;
+    }
+    .form-field input:focus, .form-field textarea:focus {
+      border-color: var(--gold); background: #fff; box-shadow: 0 0 0 4px rgba(201, 154, 46, .18);
+    }
+    .form-field textarea { min-height: 140px; resize: vertical; }
+    .submit-btn { justify-self: start; padding: .8rem 1.6rem; font-size: 1rem; }
+    .submit-btn:disabled { opacity: .6; cursor: default; transform: none; }
+    #form-status { font-size: .9rem; font-weight: 600; color: var(--gold-deep); display: none; }
+
+    /* ── footer ── */
+    footer { border-top: 1px solid var(--line); padding: 2.5rem 0 3rem; font-size: .9rem; color: var(--ink-soft); }
+    .footer-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.25rem 2rem; }
+    .footer-brand { display: grid; gap: .25rem; }
+    .footer-brand .brand { color: var(--ink); }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 1.25rem; list-style: none; }
+    .footer-links a { text-decoration: none; }
+    .footer-links a:hover { color: var(--ink); }
+    .footer-fine { width: 100%; display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 1.5rem; font-size: .8rem; opacity: .75; }
+    .footer-fine a { text-decoration: none; }
+    .footer-fine a:hover { text-decoration: underline; }
+
+    /* ── language picker (Persian root, first visit) ── */
+    .lang-picker {
+      position: fixed; inset: 0; z-index: 100; display: none; place-items: center; padding: 24px;
+      background: rgba(36, 28, 19, .45); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    }
+    .needs-lang .lang-picker { display: grid; }
+    .needs-lang body { overflow: hidden; }
+    .lang-picker-card {
+      width: min(420px, 100%); background: var(--card); border-radius: 28px; padding: 2rem 1.75rem 1.5rem;
+      text-align: center; display: grid; justify-items: center; gap: 1rem;
+      box-shadow: 0 40px 80px -30px rgba(36, 28, 19, .7);
+      animation: pop .5s var(--ease) both;
+    }
+    .lang-picker-card img { border-radius: 16px; box-shadow: 0 6px 18px rgba(36,28,19,.2); }
+    .lang-picker-title { display: grid; gap: .15rem; font-weight: 800; font-size: 1.25rem; }
+    .lang-picker-title span { font-weight: 500; font-size: .9rem; color: var(--ink-soft); }
+    .lang-choices { display: grid; gap: .6rem; width: 100%; }
+    .lang-choice {
+      display: block; text-decoration: none; font-weight: 700; font-size: 1.1rem;
+      padding: .9rem; border-radius: 16px; border: 1px solid var(--line); background: var(--paper);
+      transition: border-color .2s, background .2s, transform .2s var(--ease);
+    }
+    .lang-choice:hover { border-color: var(--gold); background: var(--gold-wash); transform: translateY(-1px); }
+    .lang-picker-note { font-size: .8rem; color: var(--ink-soft); }
+    @keyframes pop { from { opacity: 0; transform: translateY(14px) scale(.98); } }
+
+    /* ── reveal on scroll ── */
+    .js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s var(--ease), transform .65s var(--ease); transition-delay: calc(var(--i, 0) * 80ms); }
+    .js .reveal.in { opacity: 1; transform: none; }
+
+    /* ── responsive ── */
+    @media (max-width: 1000px) {
+      .tiles { grid-template-columns: repeat(2, 1fr); }
+      .plan-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
+    }
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .nav-end { margin-inline-start: auto; }
+      .hero { padding-top: 104px; }
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-copy { justify-items: center; }
+      .hero-cta { justify-content: center; }
+      .trust { justify-content: center; }
+      .hero-phones { height: 470px; margin-top: 1rem; }
+      .phone-center { width: 210px; }
+      .phone-side { width: 170px; }
+      .chapters-grid { display: block; }
+      .stage, .marks { display: none; }
+      .chapter { min-height: 0; padding: 2.5rem 0; border-top: 1px solid var(--line); }
+      .chapter:first-child { border-top: 0; }
+      .chapter-copy { position: static; opacity: 1; padding: 0; max-width: none; }
+      .chapter-shots {
+        display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory;
+        margin: 1.75rem -24px 0; padding: 0 24px 1.5rem; scrollbar-width: none;
+      }
+      .chapter-shots::-webkit-scrollbar { display: none; }
+      .chapter-shots .phone { flex: 0 0 min(60vw, 240px); scroll-snap-align: center; }
+      .chapter-shots .phone:only-child { margin: 0 auto; }
+      .contact-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .dates { grid-template-columns: 1fr; max-width: 420px; }
+    }
+    @media (max-width: 560px) {
+      .wrap { padding: 0 16px; }
+      .brand span { display: none; }
+      .nav .btn-gold { padding: .5rem .9rem; }
+      .hero-phones { height: 400px; }
+      .phone-center { width: 180px; }
+      .phone-side { width: 146px; }
+      .phone-left { transform: translateX(-58%) rotate(-8deg) translateY(22px); }
+      .phone-right { transform: translateX(58%) rotate(8deg) translateY(22px); }
+      .tiles { gap: .75rem; }
+      .tile { padding: 1.1rem; }
+      .tile svg { width: 38px; height: 38px; padding: 8px; border-radius: 12px; margin-bottom: .7rem; }
+      .tile h3 { font-size: .95rem; }
+      .tile p { font-size: .84rem; }
+      .trust { gap: .4rem; font-size: .78rem; }
+      .trust li { padding: .3rem .65rem; }
+      .hero-copy { gap: 1.2rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .submit-btn { justify-self: stretch; }
+      .chapter-shots { margin-inline: -16px; padding-inline: 16px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .js .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  
+
+  <header class="nav" id="top">
+    <div class="wrap nav-inner">
+      <a class="brand" href="/en/"><img src="/assets/icons/ghollak-icon.png" alt="" width="34" height="34" /><span>Ghollak</span></a>
+      <nav class="nav-links" aria-label="Ghollak">
+        <a href="#features">Features</a>
+        <a href="#plans">Plans</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="nav-end">
+        <details class="lang-menu">
+          <summary aria-label="Language"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3Z"/></svg>English</summary>
+          <div class="lang-list"><a href="/" lang="fa" hreflang="fa" data-lang="fa">فارسی</a><a href="/en/" lang="en" hreflang="en" aria-current="true" data-lang="en">English</a><a href="/ar/" lang="ar" hreflang="ar" data-lang="ar">العربية</a></div>
+        </details>
+        <a class="btn-gold" href="https://apps.apple.com/us/app/ghollak-persian-english/id544694377" target="_blank" rel="noopener">Download</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="wrap hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow">Made for iPhone, iPad &amp; Mac</p>
+          <h1>Simple as a piggy bank.<br><em>Complete as a ledger.</em></h1>
+          <p class="lead">Your personal money and your business in one calm app — accounts, the people who owe you, your store, checks and reports you&#x27;d be proud to send.</p>
+          <div class="hero-cta">
+            <a class="store-badge" href="https://apps.apple.com/us/app/ghollak-persian-english/id544694377" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 1.43c0 1.14-.49 2.27-1.18 3.08-.74.9-1.99 1.57-2.99 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.57-2.27 1.21-2.98.8-.94 2.14-1.64 3.25-1.68.03.13.05.28.05.43zm4.56 15.71c-.03.07-.46 1.58-1.52 3.12-.94 1.34-1.94 2.71-3.43 2.71-1.52 0-1.9-.88-3.63-.88-1.7 0-2.3.91-3.67.91-1.38 0-2.33-1.26-3.43-2.8-1.29-1.82-2.32-4.63-2.32-7.28 0-4.28 2.8-6.55 5.55-6.55 1.45 0 2.68.95 3.6.95.87 0 2.22-1.01 3.9-1.01.61 0 2.89.06 4.37 2.19-.13.09-2.38 1.37-2.38 4.19 0 3.26 2.85 4.42 2.96 4.45z"/></svg><span><small>Download on the</small><strong>App Store</strong></span></a>
+            <a class="link-arrow" href="#features">See what it does <span aria-hidden="true">↓</span></a>
+          </div>
+          <p class="free-note">Free to download</p>
+          <ul class="trust">
+            <li><span class="star" aria-hidden="true">★</span><b>4.5</b> on the App Store</li>
+            <li><b><span data-years>14</span>+</b> years on the App Store</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>No sign-up. Your data stays on your device.</li>
+          </ul>
+        </div>
+        <div class="hero-phones"><div class="phone phone-side phone-left"><div class="phone-screen"><img src="/assets/screens/en/03-store.webp" alt="Store dashboard with stock value, monthly sales and profit" width="660" height="1435"  decoding="async" data-shot="03-store" /></div></div><div class="phone phone-center"><div class="phone-screen"><img src="/assets/screens/en/01-home.webp" alt="Home screen with total balance, upcoming transactions and account cards" width="660" height="1435" fetchpriority="high" decoding="async" data-shot="01-home" /></div></div><div class="phone phone-side phone-right"><div class="phone-screen"><img src="/assets/screens/en/08-charts.webp" alt="Charts screen with an expense breakdown pie chart" width="660" height="1435"  decoding="async" data-shot="08-charts" /></div></div></div>
+      </div>
+    </section>
+
+    <section class="features" id="features">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <p class="eyebrow">What&#x27;s inside</p>
+          <h2>Everything your money touches, <em>in one place.</em></h2>
+          <p class="lead">Start with a single account. Grow into a full shop. Ghollak keeps up.</p>
+        </header>
+        <div class="chapters-grid">
+          <div class="stage"><div class="phone stage-phone"><div class="phone-screen"><img src="/assets/screens/en/01-home.webp" alt="Home screen with total balance, upcoming transactions and account cards" width="660" height="1435" loading="lazy" decoding="async" data-shot="01-home" /><img src="/assets/screens/en/02-account.webp" alt="An account with its savings goal progress and transactions" width="660" height="1435" loading="lazy" decoding="async" data-shot="02-account" /><img src="/assets/screens/en/05-people.webp" alt="People ledger with what others owe you and what you owe" width="660" height="1435" loading="lazy" decoding="async" data-shot="05-people" /><img src="/assets/screens/en/03-store.webp" alt="Store dashboard with stock value, monthly sales and profit" width="660" height="1435" loading="lazy" decoding="async" data-shot="03-store" /><img src="/assets/screens/en/04-invoice.webp" alt="A sales invoice with its line items and totals" width="660" height="1435" loading="lazy" decoding="async" data-shot="04-invoice" /><img src="/assets/screens/en/06-checks.webp" alt="Checks list with amounts and due dates" width="660" height="1435" loading="lazy" decoding="async" data-shot="06-checks" /><img src="/assets/screens/en/07-reminders.webp" alt="Reminders for upcoming payments and tasks" width="660" height="1435" loading="lazy" decoding="async" data-shot="07-reminders" /><img src="/assets/screens/en/08-charts.webp" alt="Charts screen with an expense breakdown pie chart" width="660" height="1435" loading="lazy" decoding="async" data-shot="08-charts" /><img src="/assets/screens/en/09-pdf-settings.webp" alt="PDF export settings: logo, title, colors and columns" width="660" height="1435" loading="lazy" decoding="async" data-shot="09-pdf-settings" /><img src="/assets/screens/en/10-pdf-export.webp" alt="A branded PDF invoice report with your logo, ready to share" width="660" height="1435" loading="lazy" decoding="async" data-shot="10-pdf-export" /></div></div></div>
+          <div class="chapter-list">
+            <article class="chapter" id="accounts" style="--shots:2"><div class="marks" aria-hidden="true"><i class="mark" data-shot="01-home"></i><i class="mark" data-shot="02-account"></i></div><div class="chapter-copy"><p class="chapter-kicker"><span class="chapter-num">01</span>Accounts &amp; transactions</p><h3>See all your money at a glance.</h3><p class="chapter-body">Accounts in any currency, a daily digest of what&#x27;s coming up, savings goals that fill as you go, and recurring transactions that record themselves.</p><ul class="ticks"><li>Multiple accounts and currencies</li><li>A savings goal for every account</li><li>Recurring transactions and transfers</li></ul></div><div class="chapter-shots"><div class="phone"><div class="phone-screen"><img src="/assets/screens/en/01-home.webp" alt="Home screen with total balance, upcoming transactions and account cards" width="660" height="1435" loading="lazy" decoding="async" data-shot="01-home" /></div></div><div class="phone"><div class="phone-screen"><img src="/assets/screens/en/02-account.webp" alt="An account with its savings goal progress and transactions" width="660" height="1435" loading="lazy" decoding="async" data-shot="02-account" /></div></div></div></article>
+<article class="chapter" id="people" style="--shots:1"><div class="marks" aria-hidden="true"><i class="mark" data-shot="05-people"></i></div><div class="chapter-copy"><p class="chapter-kicker"><span class="chapter-num">02</span>People</p><h3>Know exactly who owes whom.</h3><p class="chapter-body">A ledger for every person: what you gave, what came back and what&#x27;s still open. Settle up in a tap and share a clean statement.</p><ul class="ticks"><li>Debts and receivables per person</li><li>Settlements recorded in your accounts</li><li>Shareable statements</li></ul></div><div class="chapter-shots"><div class="phone"><div class="phone-screen"><img src="/assets/screens/en/05-people.webp" alt="People ledger with what others owe you and what you owe" width="660" height="1435" loading="lazy" decoding="async" data-shot="05-people" /></div></div></div></article>
+<article class="chapter" id="store" style="--shots:2"><div class="marks" aria-hidden="true"><i class="mark" data-shot="03-store"></i><i class="mark" data-shot="04-invoice"></i></div><div class="chapter-copy"><p class="chapter-kicker"><span class="chapter-num">03</span>Store</p><h3>Run your shop from your pocket.</h3><p class="chapter-body">Products, stock, purchases, sales and returns, with a barcode scanner in the camera. Ghollak works out average cost, profit and what your inventory is worth.</p><ul class="ticks"><li>Barcode scanning</li><li>Sales, purchase and return invoices</li><li>Stock value and gross profit</li></ul></div><div class="chapter-shots"><div class="phone"><div class="phone-screen"><img src="/assets/screens/en/03-store.webp" alt="Store dashboard with stock value, monthly sales and profit" width="660" height="1435" loading="lazy" decoding="async" data-shot="03-store" /></div></div><div class="phone"><div class="phone-screen"><img src="/assets/screens/en/04-invoice.webp" alt="A sales invoice with its line items and totals" width="660" height="1435" loading="lazy" decoding="async" data-shot="04-invoice" /></div></div></div></article>
+<article class="chapter" id="checks" style="--shots:2"><div class="marks" aria-hidden="true"><i class="mark" data-shot="06-checks"></i><i class="mark" data-shot="07-reminders"></i></div><div class="chapter-copy"><p class="chapter-kicker"><span class="chapter-num">04</span>Checks &amp; reminders</p><h3>Never miss a due date again.</h3><p class="chapter-body">Track checks you&#x27;ve received and issued, get a heads-up before they&#x27;re due, and archive them once they clear. Set reminders for anything else, too.</p><ul class="ticks"><li>Received and issued checks</li><li>Due-date notifications your way</li><li>Reminders for anything</li></ul></div><div class="chapter-shots"><div class="phone"><div class="phone-screen"><img src="/assets/screens/en/06-checks.webp" alt="Checks list with amounts and due dates" width="660" height="1435" loading="lazy" decoding="async" data-shot="06-checks" /></div></div><div class="phone"><div class="phone-screen"><img src="/assets/screens/en/07-reminders.webp" alt="Reminders for upcoming payments and tasks" width="660" height="1435" loading="lazy" decoding="async" data-shot="07-reminders" /></div></div></div></article>
+<article class="chapter" id="reports" style="--shots:3"><div class="marks" aria-hidden="true"><i class="mark" data-shot="08-charts"></i><i class="mark" data-shot="09-pdf-settings"></i><i class="mark" data-shot="10-pdf-export"></i></div><div class="chapter-copy"><p class="chapter-kicker"><span class="chapter-num">05</span>Reports &amp; export</p><h3>Reports you&#x27;d proudly send.</h3><p class="chapter-body">Charts that show where the money goes, and PDF or Excel exports with your logo, title, colors and the columns you choose.</p><ul class="ticks"><li>Pie, bar, line and trend charts</li><li>PDF and Excel with your branding</li><li>Every past export, one tap away</li></ul></div><div class="chapter-shots"><div class="phone"><div class="phone-screen"><img src="/assets/screens/en/08-charts.webp" alt="Charts screen with an expense breakdown pie chart" width="660" height="1435" loading="lazy" decoding="async" data-shot="08-charts" /></div></div><div class="phone"><div class="phone-screen"><img src="/assets/screens/en/09-pdf-settings.webp" alt="PDF export settings: logo, title, colors and columns" width="660" height="1435" loading="lazy" decoding="async" data-shot="09-pdf-settings" /></div></div><div class="phone"><div class="phone-screen"><img src="/assets/screens/en/10-pdf-export.webp" alt="A branded PDF invoice report with your logo, ready to share" width="660" height="1435" loading="lazy" decoding="async" data-shot="10-pdf-export" /></div></div></div></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="little">
+      <div class="wrap">
+        <header class="section-head reveal"><h2>The little things that make it <em>yours.</em></h2></header>
+        <div class="tiles">
+          <div class="tile reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="18" height="8" rx="2"/></svg><h3>Home Screen widgets</h3><p>Balances and what&#x27;s next, without opening the app.</p></div>
+<div class="tile reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><circle cx="12" cy="15.5" r="1.2"/></svg><h3>Face ID &amp; Touch ID</h3><p>Lock the app so your numbers stay yours.</p></div>
+<div class="tile reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.6-.8 1.6-1.6 0-.9-.7-1.3-.7-2.2 0-.9.7-1.6 1.6-1.6H17a4 4 0 0 0 4-4C21 6.8 17 3 12 3Z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10" cy="7" r="1"/><circle cx="15" cy="7.5" r="1"/></svg><h3>Themes &amp; dark mode</h3><p>Gold, sky and more — in light or dark.</p></div>
+<div class="tile reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18a4.5 4.5 0 0 1-.6-9A6 6 0 0 1 18 8.5 4.75 4.75 0 0 1 17.5 18Z"/><path d="M12 15v-4m-2 2 2-2 2 2"/></svg><h3>iCloud sync &amp; backup</h3><p>The same data on every device, plus manual backups.</p></div>
+<div class="tile reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="M15.2 9.3A6 6 0 1 1 9.3 15.2"/><path d="M9 6.5v5M7.5 8h2.25a1 1 0 0 1 0 2H8"/></svg><h3>Multi-currency</h3><p>Record in any currency, with rates kept up to date.</p></div>
+<div class="tile reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9Z"/><circle cx="8" cy="8" r="1.5"/></svg><h3>Tags</h3><p>Label transactions, then filter and chart by them.</p></div>
+<div class="tile reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg><h3>Account folders</h3><p>Group accounts and see each folder&#x27;s balance.</p></div>
+<div class="tile reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2.5" width="14" height="19" rx="2.5"/><rect x="8" y="5.5" width="8" height="3.5" rx="1"/><path d="M8.5 13h.01M12 13h.01M15.5 13h.01M8.5 17h.01M12 17h.01M15.5 17h.01"/></svg><h3>Ghollak Buddy</h3><p>A floating calculator, currency and date converter.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="calendars">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <h2>Your language. <em>Your calendar.</em></h2>
+          <p class="lead">Use Ghollak in English, Persian or Arabic, with the Solar Hijri, Gregorian or Lunar Hijri calendar — and switch whenever you like.</p>
+          <div class="languages"><span lang="fa">فارسی</span><span lang="en">English</span><span lang="ar">العربية</span></div>
+        </header>
+        <div class="dates">
+          <div class="date reveal" style="--i:0"><small>Solar Hijri</small><strong data-cal="persian"></strong></div>
+          <div class="date reveal" style="--i:1"><small>Gregorian</small><strong data-cal="gregory"></strong></div>
+          <div class="date reveal" style="--i:2"><small>Lunar Hijri</small><strong data-cal="islamic-umalqura"></strong></div>
+        </div>
+        <p class="date-today">Today&#x27;s date, live in each calendar</p>
+      </div>
+    </section>
+
+    <section class="plans" id="plans">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <p class="eyebrow">Plans</p>
+          <h2>Start free. <em>Pay once</em> when you're ready.</h2>
+          <p class="lead">No subscriptions. Upgrade inside the app whenever you need more.</p>
+        </header>
+        <div class="plan-grid">
+          <div class="plan reveal" style="--i:0"><h3>Free</h3><p class="plan-tag">To get started</p><p class="plan-lead">Everything you need to try it properly:</p><ul class="ticks"><li>2 accounts and 2 checks</li><li>3 reminders and 3 recurring transactions</li><li>2 people in your ledger</li><li>3 exports a month</li><li>Try the store: 2 products, 2 invoices</li></ul></div>
+<div class="plan reveal" style="--i:1"><h3>Pro</h3><p class="plan-tag">For your personal money</p><p class="plan-lead">Everything in Free, without limits, plus:</p><ul class="ticks"><li>Unlimited accounts, checks, people and reminders</li><li>iCloud sync across your devices</li><li>Manual backup and restore</li><li>Multi-currency transactions</li><li>Tags</li><li>10 exports a month</li></ul></div>
+<div class="plan reveal plan-featured" style="--i:2"><span class="plan-badge">Most complete</span><h3>Business</h3><p class="plan-tag">For shops and freelancers</p><p class="plan-lead">Everything in Pro, plus:</p><ul class="ticks"><li>The full store: products, invoices, barcode</li><li>Branded PDF reports with your logo</li><li>Custom totals and balance rows</li><li>Account folders</li><li>Business Mode charts and chart export</li><li>Commission % on transactions</li><li>Ghollak Buddy</li><li>Unlimited exports and history</li></ul></div>
+        </div>
+        <div class="plans-cta reveal">
+          <a class="store-badge" href="https://apps.apple.com/us/app/ghollak-persian-english/id544694377" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 1.43c0 1.14-.49 2.27-1.18 3.08-.74.9-1.99 1.57-2.99 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.57-2.27 1.21-2.98.8-.94 2.14-1.64 3.25-1.68.03.13.05.28.05.43zm4.56 15.71c-.03.07-.46 1.58-1.52 3.12-.94 1.34-1.94 2.71-3.43 2.71-1.52 0-1.9-.88-3.63-.88-1.7 0-2.3.91-3.67.91-1.38 0-2.33-1.26-3.43-2.8-1.29-1.82-2.32-4.63-2.32-7.28 0-4.28 2.8-6.55 5.55-6.55 1.45 0 2.68.95 3.6.95.87 0 2.22-1.01 3.9-1.01.61 0 2.89.06 4.37 2.19-.13.09-2.38 1.37-2.38 4.19 0 3.26 2.85 4.42 2.96 4.45z"/></svg><span><small>Download on the</small><strong>App Store</strong></span></a>
+          <p class="plans-note">One-time purchase · No subscription · Upgrade from inside the app</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="wrap">
+        <div class="contact-inner reveal">
+          <div class="contact-copy">
+            <h2>Questions? Ideas? <em>Say hello.</em></h2>
+            <p class="lead">We read every message — feature requests included.</p>
+          </div>
+          <div class="contact-form"
+               data-send="Send message" data-sending="Sending…" data-ok="✓ Thanks! We&#x27;ll be in touch."
+               data-error="✗ Something went wrong. Please try again." data-network="✗ Network error. Please try again.">
+            <div class="form-row">
+              <div class="form-field">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your name" autocomplete="name" />
+              </div>
+              <div class="form-field">
+                <label for="email">Email <span>*</span></label>
+                <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" dir="ltr" required />
+              </div>
+            </div>
+            <div class="form-field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="What&#x27;s on your mind?"></textarea>
+            </div>
+            <button type="button" class="btn-gold submit-btn" onclick="handleSubmit()">Send message</button>
+            <p id="form-status" role="status"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <div class="footer-brand">
+        <a class="brand" href="/en/"><img src="/assets/icons/ghollak-icon.png" alt="" width="34" height="34" /><span>Ghollak</span></a>
+        <p>Simple as a piggy bank, complete as a ledger.</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#plans">Plans</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+      </ul>
+      <div class="footer-fine">
+        <p>© <span data-year>2026</span> Ghollak · All rights reserved.</p>
+        <p>Other apps: <a href="/tavallod-privacy-policy.html">Tavallod privacy</a> · <a href="/yadavar-privacy-policy.html">Yadavar privacy</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Contact form — same Formspree endpoint and payload as before; only the
+    // status/button text now comes from the page's language (data-* above).
+    async function handleSubmit() {
+      const form = document.querySelector('.contact-form');
+      const t = form.dataset;
+      const email = document.getElementById('email').value.trim();
+      const btn = document.querySelector('.submit-btn');
+      const status = document.getElementById('form-status');
+
+      if (!email) {
+        document.getElementById('email').focus();
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = t.sending;
+
+      const data = {
+        name: document.getElementById('name').value.trim(),
+        email: email,
+        message: document.getElementById('message').value.trim()
+      };
+
+      try {
+        const res = await fetch('https://formspree.io/f/xnjrnzjl', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(data)
+        });
+
+        if (res.ok) {
+          status.style.color = 'var(--gold-deep)';
+          status.textContent = t.ok;
+          status.style.display = 'block';
+          document.getElementById('name').value = '';
+          document.getElementById('email').value = '';
+          document.getElementById('message').value = '';
+        } else {
+          status.style.color = '#b0412f';
+          status.textContent = t.error;
+          status.style.display = 'block';
+        }
+      } catch (err) {
+        status.style.color = '#b0412f';
+        status.textContent = t.network;
+        status.style.display = 'block';
+      }
+
+      btn.disabled = false;
+      btn.textContent = t.send;
+    }
+  </script>
+
+  <script>
+    (function () {
+      var lang = document.documentElement.lang;
+      // Arabic pages use Arabic-Indic digits like the app does; browsers default ar to Latin digits.
+      var locale = lang === 'ar' ? 'ar-u-nu-arab' : lang;
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // Remember explicit language choices (switcher and first-visit picker).
+      document.addEventListener('click', function (e) {
+        var link = e.target.closest('[data-lang]');
+        if (!link) return;
+        try { localStorage.setItem('ghollak-lang', link.dataset.lang); } catch (err) {}
+        if (link.classList.contains('lang-choice') && link.dataset.lang === lang) {
+          e.preventDefault();
+          document.documentElement.classList.remove('needs-lang');
+        }
+      });
+
+      // Years on the App Store (launched 2012) and the © year stay current.
+      var now = new Date();
+      var fmt = function (n) { try { return new Intl.NumberFormat(locale).format(n); } catch (e) { return String(n); } };
+      document.querySelectorAll('[data-years]').forEach(function (el) { el.textContent = fmt(now.getFullYear() - 2012); });
+      document.querySelectorAll('[data-year]').forEach(function (el) { el.textContent = fmt(now.getFullYear()).replace(/[,٬،]/g, ''); });
+
+      // Today's date in all three calendars the app supports.
+      document.querySelectorAll('[data-cal]').forEach(function (el) {
+        try {
+          el.textContent = new Intl.DateTimeFormat(locale + (lang === 'ar' ? '-ca-' : '-u-ca-') + el.dataset.cal,
+            { day: 'numeric', month: 'long', year: 'numeric' }).format(now);
+        } catch (e) { el.closest('.date').hidden = true; }
+      });
+
+      // Nav gets a backdrop once the page scrolls.
+      var nav = document.querySelector('.nav');
+      var onScroll = function () { nav.classList.toggle('scrolled', window.scrollY > 12); };
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      // Close the language menu when clicking elsewhere.
+      var menu = document.querySelector('.lang-menu');
+      document.addEventListener('click', function (e) { if (menu.open && !menu.contains(e.target)) menu.open = false; });
+
+      // Fade sections in as they arrive.
+      var reveals = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window) || reduce) {
+        reveals.forEach(function (el) { el.classList.add('in'); });
+      } else {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); }
+          });
+        }, { rootMargin: '0px 0px -10% 0px' });
+        reveals.forEach(function (el) { io.observe(el); });
+      }
+
+      // Feature chapters: the sticky phone shows whichever screen's marker
+      // currently crosses the middle of the viewport (desktop layout only).
+      var stageImgs = document.querySelectorAll('.stage-phone img');
+      var chapters = document.querySelectorAll('.chapter');
+      var show = function (shot, chapter) {
+        stageImgs.forEach(function (img) { img.classList.toggle('is-on', img.dataset.shot === shot); });
+        chapters.forEach(function (c) { c.classList.toggle('is-active', c === chapter); });
+      };
+      // On every scroll, the active screen is the marker under the viewport's
+      // middle — or the nearest one above it, so the phone keeps the last
+      // screen after the chapters end and the right one after a jump.
+      var marks = Array.prototype.slice.call(document.querySelectorAll('.mark'));
+      var current = null, ticking = false;
+      var sync = function () {
+        ticking = false;
+        var mid = window.innerHeight / 2, pick = marks[0];
+        marks.forEach(function (m) { if (m.getBoundingClientRect().top <= mid) pick = m; });
+        if (pick && pick !== current) { current = pick; show(pick.dataset.shot, pick.closest('.chapter')); }
+      };
+      if (marks.length) {
+        sync();
+        window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(sync); } }, { passive: true });
+        window.addEventListener('resize', sync);
+      }
+    })();
+  </script>
+</body>
+</html>

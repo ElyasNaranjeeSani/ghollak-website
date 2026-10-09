@@ -120,12 +120,12 @@ def screen_list(strings, lang, section, key=None):
     return names
 
 
-def shot_img(strings, lang, name, eager=False):
+def shot_img(strings, lang, name, eager=False, priority=False):
     path = os.path.join(strings.get("_root", ROOT), "assets", "screens", lang, name + ".webp")
     if not os.path.exists(path):
         raise BuildError(f"[{lang}] screenshot file missing: assets/screens/{lang}/{name}.webp")
     alt = text(strings, f"screens.{name}", lang)
-    loading = 'fetchpriority="high"' if eager else 'loading="lazy"'
+    loading = 'fetchpriority="high"' if priority else ('' if eager else 'loading="lazy"')
     return (f'<img src="/assets/screens/{lang}/{name}.webp" alt="{esc(alt)}" '
             f'width="{SHOT_W}" height="{SHOT_H}" {loading} decoding="async" data-shot="{name}" />')
 
@@ -193,9 +193,9 @@ def block_hero_phones(strings, lang):
     if len(names) != 3:
         raise BuildError(f"[{lang}] hero needs exactly 3 screenshots, got {len(names)}")
     left, center, right = names
-    return (phone(shot_img(strings, lang, left), "phone-side phone-left")
-            + phone(shot_img(strings, lang, center, eager=True), "phone-center")
-            + phone(shot_img(strings, lang, right), "phone-side phone-right"))
+    return (phone(shot_img(strings, lang, left, eager=True), "phone-side phone-left")
+            + phone(shot_img(strings, lang, center, priority=True), "phone-center")
+            + phone(shot_img(strings, lang, right, eager=True), "phone-side phone-right"))
 
 
 def block_stage(strings, lang):

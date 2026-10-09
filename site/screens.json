@@ -1,34 +1,94 @@
 {
   "hero": {
-    "en": ["03-store", "01-home", "08-charts"],
-    "fa": ["03-store", "01-home", "04-charts"],
-    "ar": ["03-store", "01-home", "05-charts"]
+    "en": [
+      "03-store",
+      "01-home",
+      "08-charts"
+    ],
+    "fa": [
+      "03-store",
+      "01-home",
+      "04-charts"
+    ],
+    "ar": [
+      "03-store",
+      "01-home",
+      "05-charts"
+    ]
   },
   "chapters": {
     "accounts": {
-      "en": ["01-home", "02-account"],
-      "fa": ["01-home", "02-account"],
-      "ar": ["01-home", "02-account"]
+      "en": [
+        "01-home",
+        "02-account"
+      ],
+      "fa": [
+        "01-home",
+        "13-goal-folders",
+        "02-account"
+      ],
+      "ar": [
+        "01-home",
+        "02-account"
+      ]
     },
     "people": {
-      "en": ["05-people"],
-      "fa": ["05-ledger"],
-      "ar": ["06-ledger"]
+      "en": [
+        "05-people"
+      ],
+      "fa": [
+        "05-ledger"
+      ],
+      "ar": [
+        "06-ledger"
+      ]
     },
     "store": {
-      "en": ["03-store", "04-invoice"],
-      "fa": ["03-store"],
-      "ar": ["03-store", "04-invoice"]
+      "en": [
+        "03-store",
+        "04-invoice"
+      ],
+      "fa": [
+        "03-store",
+        "08-invoice",
+        "15-product-stock-card"
+      ],
+      "ar": [
+        "03-store",
+        "04-invoice"
+      ]
     },
     "checks": {
-      "en": ["06-checks", "07-reminders"],
-      "fa": ["06-checks"],
-      "ar": ["07-checks", "08-reminders"]
+      "en": [
+        "06-checks",
+        "07-reminders"
+      ],
+      "fa": [
+        "06-checks",
+        "09-reminders"
+      ],
+      "ar": [
+        "07-checks",
+        "08-reminders"
+      ]
     },
     "reports": {
-      "en": ["08-charts", "09-pdf-settings", "10-pdf-export"],
-      "fa": ["04-charts", "07-pdf"],
-      "ar": ["05-charts", "09-pdf"]
+      "en": [
+        "08-charts",
+        "09-pdf-settings",
+        "10-pdf-export"
+      ],
+      "fa": [
+        "12-business-charts",
+        "10-pdf-settings",
+        "11-pdf-export",
+        "14-export-history"
+      ],
+      "ar": [
+        "05-charts",
+        "11-pdf-settings",
+        "12-pdf-export"
+      ]
     }
   }
 }

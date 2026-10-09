@@ -103,6 +103,11 @@ class BlockTests(unittest.TestCase):
         self.assertEqual(html.count('class="phone"'), 3)
         self.assertNotIn('src=""', html)
 
+    def test_hero_phones_are_never_lazy_loaded(self):
+        html = bs.block_hero_phones(self.strings(tempfile.mkdtemp()), "en")
+        self.assertNotIn('loading="lazy"', html)
+        self.assertEqual(html.count('fetchpriority="high"'), 1)
+
     def test_stage_lists_each_screen_once(self):
         html = bs.block_stage(self.strings(tempfile.mkdtemp(), chapters=["a", "c"]), "en")
         self.assertEqual(html.count("<img"), 2)
