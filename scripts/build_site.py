@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-Renders the three language versions of the home page from one template:
+Renders every language version of the home page from one template:
 
     site/template.html + site/strings/<lang>.json + site/screens.json
-        -> index.html (fa), en/index.html, ar/index.html
+        -> index.html (fa), en/index.html, ar/index.html, es/index.html, de/index.html
 
 Placeholders in the template:
     {{t:dotted.key}}   string from the language file, HTML-escaped
@@ -33,6 +33,8 @@ LANGS = {
     "fa": {"dir": "rtl", "path": "/"},
     "en": {"dir": "ltr", "path": "/en/"},
     "ar": {"dir": "rtl", "path": "/ar/"},
+    "es": {"dir": "ltr", "path": "/es/"},
+    "de": {"dir": "ltr", "path": "/de/"},
 }
 
 PLACEHOLDER = re.compile(r"\{\{(t|h|block):([A-Za-z0-9_.\-]+)\}\}")
@@ -95,7 +97,9 @@ def render(template, strings, lang, blocks):
 
 # ── blocks ──────────────────────────────────────────────────────────────
 
-NATIVE_NAMES = {"fa": "فارسی", "en": "English", "ar": "العربية"}
+NATIVE_NAMES = {"fa": "فارسی", "en": "English", "ar": "العربية", "es": "Español", "de": "Deutsch"}
+# "Choose your language" in each language, under the Persian picker's title.
+PICKER_HINTS = {"en": "Choose your language", "ar": "اختر لغتك", "es": "Elija su idioma", "de": "Sprache wählen"}
 DIGITS = {"fa": "۰۱۲۳۴۵۶۷۸۹", "ar": "٠١٢٣٤٥٦٧٨٩"}
 # Rendered size of every screenshot WebP (see scripts/prepare_screenshots.py).
 SHOT_W, SHOT_H = 660, 1435
@@ -166,6 +170,16 @@ def block_lang_switch(strings, lang):
     return "".join(links)
 
 
+def block_languages(strings, lang):
+    """The language chips in the calendars section, one per site language."""
+    return "".join(f'<span lang="{code}">{NATIVE_NAMES[code]}</span>' for code in LANGS)
+
+
+def block_lang_codes(strings, lang):
+    """JS array of the languages that live under their own path (all but the root)."""
+    return json.dumps([code for code, info in LANGS.items() if info["path"] != "/"])
+
+
 def block_lang_overlay(strings, lang):
     # Only the Persian root greets first-time visitors with a choice; /en/
     # and /ar/ were already chosen by whoever followed that link.
@@ -178,7 +192,9 @@ def block_lang_overlay(strings, lang):
             f'<div class="lang-picker-card">'
             f'<img src="/assets/icons/ghollak-icon.png" alt="" width="64" height="64" />'
             f'<p id="lang-picker-title" class="lang-picker-title">{esc(text(strings, "picker.title", lang))}'
-            f'<span lang="en">Choose your language</span><span lang="ar">اختر لغتك</span></p>'
+            + '<span class="lang-picker-hints">'
+            + "".join(f'<span lang="{code}">{esc(PICKER_HINTS[code])}</span>' for code in LANGS if code != lang)
+            + '</span></p>'
             f'<div class="lang-choices">{buttons}</div>'
             f'<p class="lang-picker-note">{esc(text(strings, "picker.note", lang))}</p>'
             f'</div></div>')
@@ -281,6 +297,8 @@ BLOCKS = {
     "hreflang": block_hreflang,
     "lang_switch": block_lang_switch,
     "lang_overlay": block_lang_overlay,
+    "languages": block_languages,
+    "lang_codes": block_lang_codes,
     "hero_phones": block_hero_phones,
     # data-placement tells the analytics click event which button was used.
     "store_badge_hero": lambda strings, lang: block_store_badge(strings, lang, "hero"),

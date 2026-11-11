@@ -50,7 +50,7 @@ class RenderTests(unittest.TestCase):
 
 
 class PageTests(unittest.TestCase):
-    def make_root(self, langs=("en", "fa", "ar")):
+    def make_root(self, langs=tuple(bs.LANGS)):
         root = tempfile.mkdtemp()
         os.makedirs(os.path.join(root, "site", "strings"))
         with open(os.path.join(root, "site", "template.html"), "w") as f:
@@ -68,18 +68,24 @@ class PageTests(unittest.TestCase):
         self.assertIn('lang="en" dir="ltr"', bs.render_page("en", root))
         self.assertIn('lang="fa" dir="rtl"', bs.render_page("fa", root))
         self.assertIn('lang="ar" dir="rtl"', bs.render_page("ar", root))
+        self.assertIn('lang="es" dir="ltr"', bs.render_page("es", root))
+        self.assertIn('lang="de" dir="ltr"', bs.render_page("de", root))
 
     def test_hreflang_alternates_for_all_languages(self):
         html = bs.render_page("en", self.make_root())
         self.assertIn('hreflang="fa" href="https://ghollak.app/"', html)
         self.assertIn('hreflang="en" href="https://ghollak.app/en/"', html)
         self.assertIn('hreflang="ar" href="https://ghollak.app/ar/"', html)
+        self.assertIn('hreflang="es" href="https://ghollak.app/es/"', html)
+        self.assertIn('hreflang="de" href="https://ghollak.app/de/"', html)
         self.assertIn('hreflang="x-default" href="https://ghollak.app/"', html)
 
     def test_build_writes_output_paths(self):
         root = self.make_root()
-        bs.build(["fa", "en", "ar"], root)
+        bs.build(list(bs.LANGS), root)
         self.assertIn("hi-fa", open(os.path.join(root, "index.html")).read())
+        self.assertIn("hi-es", open(os.path.join(root, "es", "index.html")).read())
+        self.assertIn("hi-de", open(os.path.join(root, "de", "index.html")).read())
         self.assertIn("hi-en", open(os.path.join(root, "en", "index.html")).read())
         self.assertIn("hi-ar", open(os.path.join(root, "ar", "index.html")).read())
 
@@ -193,6 +199,22 @@ class BlockTests(unittest.TestCase):
         self.assertNotIn("<small>", html)
         self.assertIn("store-badge-single", html)
 
+    def test_overlay_offers_every_language_with_a_hint_in_each_other_language(self):
+        html = bs.block_lang_overlay({"picker": {"title": "t", "note": "n"}}, "fa")
+        for code, info in bs.LANGS.items():
+            self.assertIn(f'href="{info["path"]}" lang="{code}"', html)
+            if code != "fa":
+                self.assertIn(f'<span lang="{code}">', html)
+
+    def test_lang_codes_lists_every_language_but_the_root(self):
+        codes = json.loads(bs.block_lang_codes({}, "fa"))
+        self.assertEqual(sorted(codes), sorted(c for c in bs.LANGS if c != "fa"))
+
+    def test_languages_block_names_every_language(self):
+        html = bs.block_languages({}, "de")
+        for code in bs.LANGS:
+            self.assertIn(f'<span lang="{code}">{bs.NATIVE_NAMES[code]}</span>', html)
+
     def test_overlay_only_on_persian_root(self):
         s = {"picker": {"title": "t", "note": "n"}}
         self.assertIn("lang-picker", bs.block_lang_overlay(s, "fa"))
@@ -211,6 +233,12 @@ class RealPageTests(unittest.TestCase):
             self.assertEqual(len(links), 3, lang)
             for link in links:
                 self.assertRegex(link, r'data-placement="(nav|hero|plans)"', f"{lang}: {link}")
+
+    def test_every_language_has_its_share_image(self):
+        for lang in bs.LANGS:
+            strings = bs.load_json(os.path.join(bs.ROOT, "site", "strings", f"{lang}.json"))
+            image = strings["meta"]["og_image"]
+            self.assertTrue(os.path.exists(os.path.join(bs.ROOT, image.lstrip("/"))), f"{lang}: {image}")
 
     def test_analytics_uses_firebase_measurement_id_only_on_live_host(self):
         html = bs.render_page("en")

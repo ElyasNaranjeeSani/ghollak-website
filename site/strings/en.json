@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Ghollak — Personal & business finance for iPhone, iPad and Mac",
-    "description": "Simple as a piggy bank, complete as a ledger. Accounts, people, store and invoices, checks, reports and PDF/Excel export — in English, Persian and Arabic.",
+    "description": "Simple as a piggy bank, complete as a ledger. Accounts, people, store and invoices, checks, reports and PDF/Excel export — in English, Persian, Arabic, Spanish and German.",
     "og_image": "/assets/og/og-en.jpg",
     "fonts_href": "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap",
     "font_display": "'Instrument Serif', Georgia, serif",
@@ -139,7 +139,7 @@
   },
   "calendars": {
     "title_html": "Your language. <em>Your calendar.</em>",
-    "sub": "Use Ghollak in English, Persian or Arabic, with the Solar Hijri, Gregorian or Lunar Hijri calendar — and switch whenever you like.",
+    "sub": "Use Ghollak in English, Persian, Arabic, Spanish or German, with the Solar Hijri, Gregorian or Lunar Hijri calendar — and switch whenever you like.",
     "today": "Today's date, live in each calendar",
     "shamsi": "Solar Hijri",
     "gregorian": "Gregorian",

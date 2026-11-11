@@ -1,0 +1,242 @@
+{
+  "meta": {
+    "title": "Ghollak — Finanzas personales y de negocio para iPhone, iPad y Mac",
+    "description": "Sencilla como una hucha, completa como un libro de cuentas. Cuentas, personas, tienda y facturas, cheques, informes y exportación a PDF y Excel — en español, inglés, persa, árabe y alemán.",
+    "og_image": "/assets/og/og-es.jpg",
+    "fonts_href": "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap",
+    "font_display": "'Instrument Serif', Georgia, serif",
+    "font_sans": "'Manrope', system-ui, sans-serif",
+    "brand": "Ghollak"
+  },
+  "nav": {
+    "features": "Funciones",
+    "plans": "Planes",
+    "contact": "Contacto",
+    "download": "Descargar",
+    "language": "Idioma"
+  },
+  "store_badge": {
+    "kicker": "Descárgalo en el",
+    "store": "App Store"
+  },
+  "hero": {
+    "eyebrow": "Para iPhone, iPad y Mac",
+    "title_html": "Sencilla como una hucha.<br><em>Completa como un libro de cuentas.</em>",
+    "sub": "Su dinero y su negocio en una sola app tranquila — cuentas, las personas que le deben, su tienda, sus cheques e informes que dan gusto enviar.",
+    "secondary": "Vea lo que hace",
+    "free_note": "Descarga gratuita",
+    "rating_value": "4,5",
+    "rating": "en el App Store",
+    "years": "años en el App Store",
+    "privacy": "Sin registro. Sus datos se quedan en su dispositivo."
+  },
+  "chapters": {
+    "eyebrow": "Qué incluye",
+    "title_html": "Todo lo que toca su dinero, <em>en un solo lugar.</em>",
+    "sub": "Empiece con una sola cuenta. Crezca hasta una tienda completa. Ghollak le acompaña.",
+    "items": [
+      {
+        "id": "accounts",
+        "kicker": "Cuentas y movimientos",
+        "title": "Todo su dinero de un vistazo.",
+        "body": "Cuentas en cualquier moneda, un resumen diario de lo que está por llegar, objetivos de ahorro que se van llenando y movimientos recurrentes que se registran solos.",
+        "ticks": [
+          "Varias cuentas y monedas",
+          "Un objetivo de ahorro para cada cuenta",
+          "Movimientos y transferencias recurrentes"
+        ]
+      },
+      {
+        "id": "people",
+        "kicker": "Personas",
+        "title": "Sepa exactamente quién debe a quién.",
+        "body": "Una cuenta corriente para cada persona: lo que dio, lo que le devolvieron y lo que sigue pendiente. Salde cuentas con un toque y comparta un estado de cuenta claro.",
+        "ticks": [
+          "Lo que le deben y lo que debe, por persona",
+          "Pagos registrados en sus cuentas",
+          "Estados de cuenta para compartir"
+        ]
+      },
+      {
+        "id": "store",
+        "kicker": "Tienda",
+        "title": "Lleve su tienda en el bolsillo.",
+        "body": "Productos, stock, compras, ventas y devoluciones, con lector de código de barras en la cámara. Ghollak calcula el coste medio, el beneficio y lo que vale su stock.",
+        "ticks": [
+          "Lector de código de barras",
+          "Facturas de venta, compra y devolución",
+          "Valor del stock y beneficio bruto"
+        ]
+      },
+      {
+        "id": "checks",
+        "kicker": "Cheques y recordatorios",
+        "title": "No se le vuelva a pasar un vencimiento.",
+        "body": "Siga los cheques recibidos y emitidos, reciba un aviso antes de que venzan y archívelos cuando se cobren. Y cree recordatorios para cualquier otra cosa.",
+        "ticks": [
+          "Cheques recibidos y emitidos",
+          "Avisos de vencimiento a su medida",
+          "Recordatorios para lo que quiera"
+        ]
+      },
+      {
+        "id": "reports",
+        "kicker": "Informes y exportación",
+        "title": "Informes que dan gusto enviar.",
+        "body": "Gráficos que muestran adónde va el dinero, y exportaciones a PDF o Excel con su logotipo, título, colores y las columnas que elija.",
+        "ticks": [
+          "Gráficos circulares, de barras, líneas y tendencias",
+          "PDF y Excel con su marca",
+          "Todas sus exportaciones, a un toque"
+        ]
+      }
+    ]
+  },
+  "little": {
+    "title_html": "Los pequeños detalles que la hacen <em>suya.</em>",
+    "tiles": [
+      {
+        "icon": "widgets",
+        "title": "Widgets de la pantalla de inicio",
+        "body": "Saldos y lo próximo, sin abrir la app."
+      },
+      {
+        "icon": "lock",
+        "title": "Face ID y Touch ID",
+        "body": "Bloquee la app para que sus números sigan siendo suyos."
+      },
+      {
+        "icon": "palette",
+        "title": "Temas y modo oscuro",
+        "body": "Dorado, azul cielo y más — en claro u oscuro."
+      },
+      {
+        "icon": "cloud",
+        "title": "Sincronización y copia en iCloud",
+        "body": "Los mismos datos en todos sus dispositivos, y copias manuales."
+      },
+      {
+        "icon": "currency",
+        "title": "Varias monedas",
+        "body": "Registre en cualquier moneda, con tipos de cambio al día."
+      },
+      {
+        "icon": "tag",
+        "title": "Etiquetas",
+        "body": "Etiquete movimientos y luego filtre y grafique por ellas."
+      },
+      {
+        "icon": "folder",
+        "title": "Carpetas de cuentas",
+        "body": "Agrupe cuentas y vea el saldo de cada carpeta."
+      },
+      {
+        "icon": "calculator",
+        "title": "Asistente Ghollak",
+        "body": "Calculadora flotante, conversor de monedas y de fechas."
+      }
+    ]
+  },
+  "calendars": {
+    "title_html": "Su idioma. <em>Su calendario.</em>",
+    "sub": "Use Ghollak en español, inglés, persa, árabe o alemán, con el calendario gregoriano, persa (solar) o hijri — y cámbielo cuando quiera.",
+    "today": "La fecha de hoy, en vivo en cada calendario",
+    "shamsi": "Persa (solar)",
+    "gregorian": "Gregoriano",
+    "hijri": "Hijri (lunar)"
+  },
+  "plans": {
+    "eyebrow": "Planes",
+    "title_html": "Empiece gratis. <em>Pague una vez</em> cuando quiera.",
+    "sub": "Sin suscripciones. Mejore su plan desde la app cuando necesite más.",
+    "note": "Pago único · Sin suscripción · Mejore su plan desde la app",
+    "cards": [
+      {
+        "name": "Gratis",
+        "tag": "Para empezar",
+        "lead": "Todo lo necesario para probarla a fondo:",
+        "items": [
+          "2 cuentas y 2 cheques",
+          "3 recordatorios y 3 movimientos recurrentes",
+          "2 personas en su cuenta corriente",
+          "3 exportaciones al mes",
+          "Pruebe la tienda: 2 productos, 2 facturas"
+        ]
+      },
+      {
+        "name": "Pro",
+        "tag": "Para su dinero personal",
+        "lead": "Todo lo de Gratis, sin límites, y además:",
+        "items": [
+          "Cuentas, cheques, personas y recordatorios ilimitados",
+          "Sincronización con iCloud entre sus dispositivos",
+          "Copia de seguridad y restauración manuales",
+          "Movimientos en varias monedas",
+          "Etiquetas",
+          "10 exportaciones al mes"
+        ]
+      },
+      {
+        "name": "Business",
+        "tag": "Para tiendas y autónomos",
+        "badge": "La más completa",
+        "lead": "Todo lo de Pro, y además:",
+        "items": [
+          "La tienda completa: productos, facturas, código de barras",
+          "Informes PDF con su logotipo",
+          "Totales y filas de saldo personalizados",
+          "Carpetas de cuentas",
+          "Gráficos del modo Business y exportación de gráficos",
+          "Comisión % en los movimientos",
+          "Asistente Ghollak",
+          "Exportaciones e historial ilimitados"
+        ]
+      }
+    ]
+  },
+  "contact": {
+    "title_html": "¿Preguntas? ¿Ideas? <em>Escríbanos.</em>",
+    "sub": "Leemos todos los mensajes — también las sugerencias de funciones.",
+    "name": "Nombre",
+    "name_ph": "Su nombre",
+    "email": "Correo electrónico",
+    "email_ph": "usted@ejemplo.com",
+    "message": "Mensaje",
+    "message_ph": "¿Qué tiene en mente?",
+    "send": "Enviar mensaje",
+    "sending": "Enviando…",
+    "ok": "✓ ¡Gracias! Le responderemos pronto.",
+    "error": "✗ Algo salió mal. Inténtelo de nuevo.",
+    "network": "✗ Error de red. Inténtelo de nuevo."
+  },
+  "footer": {
+    "tagline": "Sencilla como una hucha, completa como un libro de cuentas.",
+    "privacy": "Política de privacidad",
+    "other_apps": "Otras apps:",
+    "tavallod": "Privacidad de Tavallod",
+    "yadavar": "Privacidad de Yadavar",
+    "rights": "Todos los derechos reservados."
+  },
+  "picker": {
+    "title": "Elija su idioma",
+    "note": "Puede cambiarlo cuando quiera desde la parte superior de la página."
+  },
+  "screens": {
+    "01-home": "Pantalla de inicio con el saldo total, los próximos movimientos y las tarjetas de cuentas",
+    "02-account": "Una cuenta con el progreso de su objetivo de ahorro y sus movimientos",
+    "03-store": "Panel de la tienda con el valor del stock, las ventas del mes y el beneficio",
+    "04-invoice": "Una factura de venta con sus conceptos y totales",
+    "05-charts": "Pantalla de gráficos con un gráfico circular de gastos",
+    "06-ledger": "Personas: lo que le deben y lo que debe",
+    "07-checks": "Gestión de cheques con importes y vencimientos",
+    "08-reminders": "Recordatorios de pagos y tareas próximos",
+    "09-pdf": "Vista previa de un informe PDF de una cuenta, listo para compartir"
+  },
+  "consent": {
+    "label": "Consentimiento de cookies",
+    "text": "Usamos cookies solo para la analítica del sitio web — nunca para publicidad y nunca vinculadas a sus datos de Ghollak.",
+    "more": "Política de privacidad",
+    "accept": "Aceptar",
+    "decline": "Rechazar"
+  }
+}

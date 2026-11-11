@@ -14,6 +14,16 @@
       "03-store",
       "01-home",
       "05-charts"
+    ],
+    "es": [
+      "03-store",
+      "01-home",
+      "05-charts"
+    ],
+    "de": [
+      "03-store",
+      "01-home",
+      "04-charts"
     ]
   },
   "chapters": {
@@ -30,6 +40,14 @@
       "ar": [
         "01-home",
         "02-account"
+      ],
+      "es": [
+        "01-home",
+        "02-account"
+      ],
+      "de": [
+        "01-home",
+        "02-account"
       ]
     },
     "people": {
@@ -41,6 +59,12 @@
       ],
       "ar": [
         "06-ledger"
+      ],
+      "es": [
+        "06-ledger"
+      ],
+      "de": [
+        "05-ledger"
       ]
     },
     "store": {
@@ -56,6 +80,13 @@
       "ar": [
         "03-store",
         "04-invoice"
+      ],
+      "es": [
+        "03-store",
+        "04-invoice"
+      ],
+      "de": [
+        "03-store"
       ]
     },
     "checks": {
@@ -68,6 +99,10 @@
         "09-reminders"
       ],
       "ar": [
+        "07-checks",
+        "08-reminders"
+      ],
+      "es": [
         "07-checks",
         "08-reminders"
       ]
@@ -88,6 +123,13 @@
         "05-charts",
         "11-pdf-settings",
         "12-pdf-export"
+      ],
+      "es": [
+        "05-charts",
+        "09-pdf"
+      ],
+      "de": [
+        "04-charts"
       ]
     }
   }

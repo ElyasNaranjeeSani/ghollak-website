@@ -23,7 +23,7 @@
   <link rel="apple-touch-icon" href="/assets/icons/ghollak-icon.png" />
   <script>
     // Language memory. Only the Persian root acts on it: a visitor who picked
-    // English or Arabic before is sent straight there, and a first-time
+    // another language before is sent straight there, and a first-time
     // visitor gets the picker. If storage is unavailable (some private
     // modes), nobody is redirected and no picker shows — Persian plus the nav
     // switcher still works.
@@ -35,7 +35,7 @@
         localStorage.setItem('ghollak-probe', '1'); localStorage.removeItem('ghollak-probe');
       } catch (e) { return; }
       if (root.lang !== 'fa') return;
-      if (stored === 'en' || stored === 'ar') { location.replace('/' + stored + '/' + location.search + location.hash); return; }
+      if ({{block:lang_codes}}.indexOf(stored) !== -1) { location.replace('/' + stored + '/' + location.search + location.hash); return; }
       if (!stored) root.classList.add('needs-lang');
     })();
   </script>
@@ -431,20 +431,22 @@
 
     /* ── language picker (Persian root, first visit) ── */
     .lang-picker {
-      position: fixed; inset: 0; z-index: 100; display: none; place-items: center; padding: 24px;
+      position: fixed; inset: 0; z-index: 100; display: none; padding: 24px; overflow-y: auto;
       background: rgba(36, 28, 19, .45); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
     }
     .needs-lang .lang-picker { display: grid; }
     .needs-lang body { overflow: hidden; }
     .lang-picker-card {
-      width: min(420px, 100%); background: var(--card); border-radius: 28px; padding: 2rem 1.75rem 1.5rem;
+      /* auto margins centre the card but let it scroll on short screens */
+      margin: auto; width: min(420px, 100%); background: var(--card); border-radius: 28px; padding: 2rem 1.75rem 1.5rem;
       text-align: center; display: grid; justify-items: center; gap: 1rem;
       box-shadow: 0 40px 80px -30px rgba(36, 28, 19, .7);
       animation: pop .5s var(--ease) both;
     }
     .lang-picker-card img { border-radius: 16px; box-shadow: 0 6px 18px rgba(36,28,19,.2); }
     .lang-picker-title { display: grid; gap: .15rem; font-weight: 800; font-size: 1.25rem; }
-    .lang-picker-title span { font-weight: 500; font-size: .9rem; color: var(--ink-soft); }
+    .lang-picker-hints { display: flex; flex-wrap: wrap; justify-content: center; gap: .1rem .9rem; }
+    .lang-picker-hints span { font-weight: 500; font-size: .9rem; color: var(--ink-soft); }
     .lang-choices { display: grid; gap: .6rem; width: 100%; }
     .lang-choice {
       display: block; text-decoration: none; font-weight: 700; font-size: 1.1rem;
@@ -617,7 +619,7 @@
         <header class="section-head reveal">
           <h2>{{h:calendars.title_html}}</h2>
           <p class="lead">{{t:calendars.sub}}</p>
-          <div class="languages"><span lang="fa">فارسی</span><span lang="en">English</span><span lang="ar">العربية</span></div>
+          <div class="languages">{{block:languages}}</div>
         </header>
         <div class="dates">
           <div class="date reveal" style="--i:0"><small>{{t:calendars.shamsi}}</small><strong data-cal="persian"></strong></div>
@@ -801,7 +803,7 @@
       document.querySelectorAll('[data-years]').forEach(function (el) { el.textContent = fmt(now.getFullYear() - 2012); });
       document.querySelectorAll('[data-year]').forEach(function (el) { el.textContent = fmt(now.getFullYear()).replace(/[,٬،]/g, ''); });
 
-      // Today's date in all three calendars the app supports.
+      // Today's date in each of the three calendars the app supports.
       document.querySelectorAll('[data-cal]').forEach(function (el) {
         try {
           el.textContent = new Intl.DateTimeFormat(locale + (lang === 'ar' ? '-ca-' : '-u-ca-') + el.dataset.cal,

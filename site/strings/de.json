@@ -1,0 +1,227 @@
+{
+  "meta": {
+    "title": "Ghollak — Private und geschäftliche Finanzen für iPhone, iPad und Mac",
+    "description": "Einfach wie ein Sparschwein, vollständig wie ein Kassenbuch. Konten, Personen, Laden und Rechnungen, Schecks, Berichte und PDF-/Excel-Export — auf Deutsch, Persisch, Englisch, Arabisch und Spanisch.",
+    "og_image": "/assets/og/og-de.jpg",
+    "fonts_href": "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap",
+    "font_display": "'Instrument Serif', Georgia, serif",
+    "font_sans": "'Manrope', system-ui, sans-serif",
+    "brand": "Ghollak"
+  },
+  "nav": {
+    "features": "Funktionen",
+    "plans": "Tarife",
+    "contact": "Kontakt",
+    "download": "App laden",
+    "language": "Sprache"
+  },
+  "store_badge": {
+    "kicker": "Laden im",
+    "store": "App Store"
+  },
+  "hero": {
+    "eyebrow": "Für iPhone, iPad und Mac",
+    "title_html": "Einfach wie ein Sparschwein.<br><em>Vollständig wie ein Kassenbuch.</em>",
+    "sub": "Ihr privates Geld und Ihr Geschäft in einer ruhigen App — Konten, die Personen, die Ihnen etwas schulden, Ihr Laden und Berichte, die Sie gern verschicken.",
+    "secondary": "Was die App kann",
+    "free_note": "Kostenlos laden",
+    "rating_value": "4,5",
+    "rating": "im App Store",
+    "years": "Jahre im App Store",
+    "privacy": "Ohne Registrierung. Ihre Daten bleiben auf Ihrem Gerät."
+  },
+  "chapters": {
+    "eyebrow": "Was drinsteckt",
+    "title_html": "Alles rund um Ihr Geld, <em>an einem Ort.</em>",
+    "sub": "Beginnen Sie mit einem Konto. Wachsen Sie bis zum eigenen Laden. Ghollak wächst mit.",
+    "items": [
+      {
+        "id": "accounts",
+        "kicker": "Konten & Buchungen",
+        "title": "Ihr ganzes Geld auf einen Blick.",
+        "body": "Konten in jeder Währung, ein täglicher Überblick über das, was ansteht, Sparziele, die sich nach und nach füllen, und wiederkehrende Buchungen, die sich selbst eintragen.",
+        "ticks": [
+          "Mehrere Konten und Währungen",
+          "Ein Sparziel für jedes Konto",
+          "Wiederkehrende Buchungen und Umbuchungen"
+        ]
+      },
+      {
+        "id": "people",
+        "kicker": "Personen",
+        "title": "Wissen, wer wem was schuldet.",
+        "body": "Ein Personenkonto für jede Person: was Sie gegeben haben, was zurückkam und was noch offen ist. Mit einem Tipp ausgleichen und einen klaren Kontoauszug teilen.",
+        "ticks": [
+          "Forderungen und Schulden pro Person",
+          "Ausgleich direkt in Ihren Konten erfasst",
+          "Kontoauszüge zum Teilen"
+        ]
+      },
+      {
+        "id": "store",
+        "kicker": "Laden",
+        "title": "Ihr Laden in der Hosentasche.",
+        "body": "Artikel, Bestand, Einkäufe, Verkäufe und Rückgaben, mit Barcode-Scanner in der Kamera. Ghollak berechnet Durchschnittskosten, Gewinn und den Wert Ihres Bestands.",
+        "ticks": [
+          "Barcode scannen",
+          "Verkaufs-, Einkaufs- und Rückgaberechnungen",
+          "Bestandswert und Rohgewinn"
+        ]
+      },
+      {
+        "id": "reports",
+        "kicker": "Berichte & Export",
+        "title": "Berichte, die Sie gern verschicken.",
+        "body": "Diagramme, die zeigen, wohin das Geld geht, und PDF- oder Excel-Exporte mit Ihrem Logo, Titel, Ihren Farben und den Spalten Ihrer Wahl.",
+        "ticks": [
+          "Kreis-, Balken-, Linien- und Trenddiagramme",
+          "PDF und Excel mit Ihrem Branding",
+          "Jeder frühere Export, nur einen Tipp entfernt"
+        ]
+      }
+    ]
+  },
+  "little": {
+    "title_html": "Die kleinen Dinge, die sie zu <em>Ihrer</em> App machen.",
+    "tiles": [
+      {
+        "icon": "widgets",
+        "title": "Widgets für den Home-Bildschirm",
+        "body": "Salden und was als Nächstes ansteht, ohne die App zu öffnen."
+      },
+      {
+        "icon": "lock",
+        "title": "Face ID & Touch ID",
+        "body": "Sperren Sie die App, damit Ihre Zahlen Ihnen gehören."
+      },
+      {
+        "icon": "palette",
+        "title": "Farbthemen & Dunkelmodus",
+        "body": "Gold, Himmelblau und mehr — hell oder dunkel."
+      },
+      {
+        "icon": "cloud",
+        "title": "iCloud-Sync & Backup",
+        "body": "Dieselben Daten auf jedem Gerät, dazu manuelle Backups."
+      },
+      {
+        "icon": "currency",
+        "title": "Mehrere Währungen",
+        "body": "Buchen Sie in jeder Währung, mit aktuellen Wechselkursen."
+      },
+      {
+        "icon": "tag",
+        "title": "Tags",
+        "body": "Buchungen markieren, dann danach filtern und auswerten."
+      },
+      {
+        "icon": "folder",
+        "title": "Kontoordner",
+        "body": "Konten gruppieren und den Saldo jedes Ordners sehen."
+      },
+      {
+        "icon": "calculator",
+        "title": "Ghollak-Assistent",
+        "body": "Schwebender Rechner, Währungs- und Datumsumrechner."
+      }
+    ]
+  },
+  "calendars": {
+    "title_html": "Ihre Sprache. <em>Ihr Kalender.</em>",
+    "sub": "Nutzen Sie Ghollak auf Deutsch, Persisch, Englisch, Arabisch oder Spanisch, mit gregorianischem, persischem oder Hidschri-Kalender — und wechseln Sie, wann immer Sie möchten.",
+    "today": "Das heutige Datum, live in jedem Kalender",
+    "shamsi": "Persisch (Sonnenkalender)",
+    "gregorian": "Gregorianisch",
+    "hijri": "Hidschri (Mondkalender)"
+  },
+  "plans": {
+    "eyebrow": "Tarife",
+    "title_html": "Kostenlos starten. <em>Einmal zahlen,</em> wenn Sie so weit sind.",
+    "sub": "Keine Abos. Upgraden Sie in der App, wann immer Sie mehr brauchen.",
+    "note": "Einmalkauf · Kein Abo · Upgrade direkt in der App",
+    "cards": [
+      {
+        "name": "Kostenlos",
+        "tag": "Zum Einstieg",
+        "lead": "Alles, um die App richtig auszuprobieren:",
+        "items": [
+          "2 Konten und 2 Schecks",
+          "3 Erinnerungen und 3 wiederkehrende Buchungen",
+          "2 Personen in Ihren Personenkonten",
+          "3 Exporte pro Monat",
+          "Laden testen: 2 Artikel, 2 Rechnungen"
+        ]
+      },
+      {
+        "name": "Pro",
+        "tag": "Für Ihr privates Geld",
+        "lead": "Alles aus Kostenlos, ohne Limits, und dazu:",
+        "items": [
+          "Unbegrenzt Konten, Schecks, Personen und Erinnerungen",
+          "iCloud-Synchronisierung über Ihre Geräte",
+          "Manuelles Backup und Wiederherstellen",
+          "Buchungen in mehreren Währungen",
+          "Tags",
+          "10 Exporte pro Monat"
+        ]
+      },
+      {
+        "name": "Business",
+        "tag": "Für Läden und Selbstständige",
+        "badge": "Am vollständigsten",
+        "lead": "Alles aus Pro, und dazu:",
+        "items": [
+          "Der komplette Laden: Artikel, Rechnungen, Barcode",
+          "PDF-Berichte mit Ihrem Logo",
+          "Eigene Summen- und Saldozeilen",
+          "Kontoordner",
+          "Diagramme im Business-Modus und Diagramm-Export",
+          "Provision in % auf Buchungen",
+          "Ghollak-Assistent",
+          "Unbegrenzte Exporte und Verlauf"
+        ]
+      }
+    ]
+  },
+  "contact": {
+    "title_html": "Fragen? Ideen? <em>Schreiben Sie uns.</em>",
+    "sub": "Wir lesen jede Nachricht — Funktionswünsche eingeschlossen.",
+    "name": "Name",
+    "name_ph": "Ihr Name",
+    "email": "E-Mail",
+    "email_ph": "sie@beispiel.de",
+    "message": "Nachricht",
+    "message_ph": "Was möchten Sie uns sagen?",
+    "send": "Nachricht senden",
+    "sending": "Wird gesendet…",
+    "ok": "✓ Danke! Wir melden uns bei Ihnen.",
+    "error": "✗ Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
+    "network": "✗ Netzwerkfehler. Bitte versuchen Sie es erneut."
+  },
+  "footer": {
+    "tagline": "Einfach wie ein Sparschwein, vollständig wie ein Kassenbuch.",
+    "privacy": "Datenschutzerklärung",
+    "other_apps": "Andere Apps:",
+    "tavallod": "Datenschutz Tavallod",
+    "yadavar": "Datenschutz Yadavar",
+    "rights": "Alle Rechte vorbehalten."
+  },
+  "picker": {
+    "title": "Sprache wählen",
+    "note": "Sie können sie jederzeit oben auf der Seite ändern."
+  },
+  "screens": {
+    "01-home": "Startbildschirm mit Gesamtsaldo, anstehenden Buchungen und Kontokarten",
+    "02-account": "Ein Konto mit seinen Buchungen",
+    "03-store": "Laden-Übersicht mit Bestandswert, Verkäufen des Monats und Gewinn",
+    "04-charts": "Diagramme mit Gesamteinnahmen und -ausgaben",
+    "05-ledger": "Personen: was andere Ihnen schulden und was Sie schulden"
+  },
+  "consent": {
+    "label": "Cookie-Einwilligung",
+    "text": "Wir verwenden Cookies nur für die Analyse der Website — nie für Werbung und nie verknüpft mit Ihren Ghollak-Daten.",
+    "more": "Datenschutzerklärung",
+    "accept": "Akzeptieren",
+    "decline": "Ablehnen"
+  }
+}
