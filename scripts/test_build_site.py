@@ -89,6 +89,16 @@ class PageTests(unittest.TestCase):
         self.assertIn("hi-en", open(os.path.join(root, "en", "index.html")).read())
         self.assertIn("hi-ar", open(os.path.join(root, "ar", "index.html")).read())
 
+    def test_build_writes_persian_alias_under_fa(self):
+        root = self.make_root()
+        bs.build(["fa"], root)
+        self.assertIn("hi-fa", open(os.path.join(root, "fa", "index.html")).read())
+
+    def test_build_without_persian_skips_alias(self):
+        root = self.make_root()
+        bs.build(["en"], root)
+        self.assertFalse(os.path.exists(os.path.join(root, "fa", "index.html")))
+
     def test_failed_build_writes_no_pages(self):
         root = self.make_root()
         with open(os.path.join(root, "site", "strings", "en.json"), "w") as f:
@@ -215,6 +225,14 @@ class BlockTests(unittest.TestCase):
         for code in bs.LANGS:
             self.assertIn(f'<span lang="{code}">{bs.NATIVE_NAMES[code]}</span>', html)
 
+    def test_lang_pin_only_on_alias(self):
+        self.assertEqual(bs.block_lang_pin({"_alias": False}, "fa"), "")
+        self.assertIn("setItem('ghollak-lang', \"fa\"); return;", bs.block_lang_pin({"_alias": True}, "fa"))
+
+    def test_overlay_not_on_persian_alias(self):
+        s = {"picker": {"title": "t", "note": "n"}, "_alias": True}
+        self.assertEqual(bs.block_lang_overlay(s, "fa"), "")
+
     def test_overlay_only_on_persian_root(self):
         s = {"picker": {"title": "t", "note": "n"}}
         self.assertIn("lang-picker", bs.block_lang_overlay(s, "fa"))
@@ -253,6 +271,15 @@ class RealPageTests(unittest.TestCase):
             self.assertIn('data-consent="granted"', html, lang)
             self.assertIn('data-consent="denied"', html, lang)
             self.assertIn('href="/privacy-policy.html"', html.split('class="consent"')[1].split("</div>")[0], lang)
+
+    def test_persian_alias_stays_persian_and_points_canonical_at_root(self):
+        html = bs.render_page("fa", alias=True)
+        self.assertIn('lang="fa" dir="rtl"', html)
+        self.assertIn('<link rel="canonical" href="https://ghollak.app/" />', html)
+        self.assertNotIn('class="lang-picker"', html)
+        pin = html.index("setItem('ghollak-lang', \"fa\"); return;")
+        self.assertLess(pin, html.index("location.replace("))
+        self.assertNotIn("setItem('ghollak-lang', \"fa\"); return;", bs.render_page("fa"))
 
     def test_non_eea_european_time_zones_are_excluded_from_consent(self):
         html = bs.render_page("fa")

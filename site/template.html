@@ -22,7 +22,8 @@
   <link rel="icon" href="/assets/icons/ghollak-icon.png" />
   <link rel="apple-touch-icon" href="/assets/icons/ghollak-icon.png" />
   <script>
-    // Language memory. Only the Persian root acts on it: a visitor who picked
+    // Language memory. Only the Persian root acts on it (/fa/ instead saves
+    // Persian as the choice and stays put): a visitor who picked
     // another language before is sent straight there, and a first-time
     // visitor gets the picker. If storage is unavailable (some private
     // modes), nobody is redirected and no picker shows — Persian plus the nav
@@ -32,7 +33,7 @@
       root.classList.add('js');
       try {
         stored = localStorage.getItem('ghollak-lang');
-        localStorage.setItem('ghollak-probe', '1'); localStorage.removeItem('ghollak-probe');
+        localStorage.setItem('ghollak-probe', '1'); localStorage.removeItem('ghollak-probe');{{block:lang_pin}}
       } catch (e) { return; }
       if (root.lang !== 'fa') return;
       if ({{block:lang_codes}}.indexOf(stored) !== -1) { location.replace('/' + stored + '/' + location.search + location.hash); return; }

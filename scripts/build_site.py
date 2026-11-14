@@ -4,6 +4,7 @@ Renders every language version of the home page from one template:
 
     site/template.html + site/strings/<lang>.json + site/screens.json
         -> index.html (fa), en/index.html, ar/index.html, es/index.html, de/index.html
+        -> fa/index.html, a Persian copy that always shows Persian (see ALIASES)
 
 Placeholders in the template:
     {{t:dotted.key}}   string from the language file, HTML-escaped
@@ -35,6 +36,15 @@ LANGS = {
     "ar": {"dir": "rtl", "path": "/ar/"},
     "es": {"dir": "ltr", "path": "/es/"},
     "de": {"dir": "ltr", "path": "/de/"},
+}
+
+# Extra copies of a language page at their own path. /fa/ is a link that
+# always opens Persian: unlike the root it never redirects to a remembered
+# language and never shows the first-visit picker, and it saves Persian as
+# the visitor's choice. Its canonical URL stays the root, so search engines
+# treat it as the same page.
+ALIASES = {
+    "fa": {"lang": "fa", "path": "/fa/"},
 }
 
 PLACEHOLDER = re.compile(r"\{\{(t|h|block):([A-Za-z0-9_.\-]+)\}\}")
@@ -180,10 +190,17 @@ def block_lang_codes(strings, lang):
     return json.dumps([code for code, info in LANGS.items() if info["path"] != "/"])
 
 
+def block_lang_pin(strings, lang):
+    """On an alias page (/fa/): remember its language and skip the redirect."""
+    if not strings.get("_alias"):
+        return ""
+    return f"\n        localStorage.setItem('ghollak-lang', {json.dumps(lang)}); return;"
+
+
 def block_lang_overlay(strings, lang):
-    # Only the Persian root greets first-time visitors with a choice; /en/
-    # and /ar/ were already chosen by whoever followed that link.
-    if lang != "fa":
+    # Only the Persian root greets first-time visitors with a choice; /en/,
+    # /ar/ and the /fa/ alias were already chosen by whoever followed that link.
+    if lang != "fa" or strings.get("_alias"):
         return ""
     buttons = "".join(
         f'<a class="lang-choice" href="{info["path"]}" lang="{code}" data-lang="{code}">'
@@ -297,6 +314,7 @@ BLOCKS = {
     "hreflang": block_hreflang,
     "lang_switch": block_lang_switch,
     "lang_overlay": block_lang_overlay,
+    "lang_pin": block_lang_pin,
     "languages": block_languages,
     "lang_codes": block_lang_codes,
     "hero_phones": block_hero_phones,
@@ -317,7 +335,7 @@ def load_json(path):
         return json.load(f)
 
 
-def render_page(lang, root=ROOT):
+def render_page(lang, root=ROOT, alias=False):
     with open(os.path.join(root, "site", "template.html"), encoding="utf-8") as f:
         template = f.read()
     strings = load_json(os.path.join(root, "site", "strings", f"{lang}.json"))
@@ -326,21 +344,25 @@ def render_page(lang, root=ROOT):
     strings["_path"] = LANGS[lang]["path"]
     strings["_screens"] = load_json(os.path.join(root, "site", "screens.json"))
     strings["_root"] = root
+    strings["_alias"] = alias
     strings["_native"] = NATIVE_NAMES[lang]
     strings["_years"] = localize_digits(str(date.today().year - LAUNCH_YEAR), lang)
     return render(template, strings, lang, BLOCKS)
 
 
-def output_path(lang, root=ROOT):
-    return os.path.join(root, LANGS[lang]["path"].strip("/"), "index.html")
+def output_path(lang, root=ROOT, alias=False):
+    path = (ALIASES if alias else LANGS)[lang]["path"]
+    return os.path.join(root, path.strip("/"), "index.html")
 
 
 def build(langs, root=ROOT):
     # Render every page before writing any, so a broken language file never
     # leaves the site half-updated.
-    pages = {lang: render_page(lang, root) for lang in langs}
-    for lang, page in pages.items():
-        path = output_path(lang, root)
+    pages = {output_path(lang, root): render_page(lang, root) for lang in langs}
+    for name, info in ALIASES.items():
+        if info["lang"] in langs:
+            pages[output_path(name, root, alias=True)] = render_page(info["lang"], root, alias=True)
+    for path, page in pages.items():
         os.makedirs(os.path.dirname(path), exist_ok=True)
         with open(path, "w", encoding="utf-8") as f:
             f.write(page)
